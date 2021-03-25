@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "build:ci": "ng build --prod --sourceMap=false --base-href DruzynaAFrontend",
-    "test:ci": "ng test --watch=false --code-coverage --source-map true"
+    "test:ci": "ng test --watch=false --code-coverage --source-map true",
     "e2e": "ng e2e"
   },
   "private": true,
