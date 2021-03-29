@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from 'src/app/objects/gameInterface';
+import { DatabaseGamesService } from 'src/app/services/database-games.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private dbService: DatabaseGamesService) { }
+  gameList: Game[];
   ngOnInit(): void {
+    this.getAllGames();
+  }
+
+  getAllGames() {
+   this.gameList = this.dbService.getGameList()
   }
 
 }
