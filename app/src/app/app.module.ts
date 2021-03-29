@@ -14,7 +14,7 @@ import { MainPageComponent } from './utils/main-page/main-page.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   {path: 'main', component: MainPageComponent},
-  {path: 'game-list', component: ListComponent},
+  {path: 'games-list', component: ListComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
