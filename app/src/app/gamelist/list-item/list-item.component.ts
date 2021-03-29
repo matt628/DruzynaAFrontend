@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/app/objects/gameInterface';
 
 @Component({
@@ -9,7 +9,7 @@ import { Game } from 'src/app/objects/gameInterface';
 export class ListItemComponent implements OnInit {
 
   constructor() { }
-  game: Game;
+  @Input()  game: Game;
   ngOnInit(): void {
   }
 

@@ -10,6 +10,7 @@ import { ListComponent } from './gamelist/list/list.component';
 import { ListItemComponent } from './gamelist/list-item/list-item.component';
 import { PageNotFoundComponent } from './utils/page-not-found/page-not-found.component';
 import { MainPageComponent } from './utils/main-page/main-page.component';
+import { GameDetailsComponent } from './gameList/game-details/game-details.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     ListComponent,
     ListItemComponent,
     PageNotFoundComponent,
-    MainPageComponent
+    MainPageComponent,
+    GameDetailsComponent
   ],
   imports: [
     BrowserModule,

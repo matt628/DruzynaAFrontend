@@ -5,15 +5,18 @@
         <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
     </div>
     <div class="course-info">
-        <div class="progress-container">
-            <div class="progress"></div>
-            <span class="progress-text">
-                {{currentBattleNumer}}/{{totalBattleNumler}} Battle
+        <div class="progress-wrapper">
+            <div class="progress-container">
+                <div class="progress"></div>
+                <!-- TODO set progress witdh to appropite width -->
+                <span class="progress-text">
+                {{game.currentBattleNumer}}/{{game.totalBattleNumler}} Battle
             </span>
+            </div>
         </div>
         <!-- <h6>Details</h6> -->
         <!-- <h2>Callbacks & Closures</h2> -->
-        <h6>{{game.shortDescription}}</h6>
+        <div class="game-description">{{game.shortDescription}}</div>
         <button class="btn">Szczegóły</button>
     </div>
 </div>
