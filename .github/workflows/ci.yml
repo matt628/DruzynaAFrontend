@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    env:
+      working-directory: ./app
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
