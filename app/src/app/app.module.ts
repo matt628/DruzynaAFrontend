@@ -39,8 +39,13 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-    NavbarComponent
-  ],
+    AppComponent,
+    NavbarComponent,
+    ListComponent,
+    ListItemComponent,
+    PageNotFoundComponent,
+    MainPageComponent,
+    GameDetailsComponent  ],
 
 })
 export class AppModule { }

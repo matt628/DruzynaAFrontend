@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-/* @import '~normalize.css'; */
-
+@import '~normalize.css';
 * {
     font-family: sans-serif;
 }
