@@ -37,6 +37,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    NavbarComponent
+  ],
+
 })
 export class AppModule { }
