@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from 'src/app/objects/gameInterface';
 
 @Component({
   selector: 'app-list-item',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListItemComponent implements OnInit {
 
   constructor() { }
-
+  game: Game;
   ngOnInit(): void {
   }
 
