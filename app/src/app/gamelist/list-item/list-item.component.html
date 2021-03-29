@@ -17,6 +17,6 @@
         <!-- <h6>Details</h6> -->
         <!-- <h2>Callbacks & Closures</h2> -->
         <div class="game-description">{{game.shortDescription}}</div>
-        <button class="btn">Szczegóły</button>
+        <button class="btn" [routerLink]="['..','game', game.id]">Szczegóły</button>
     </div>
 </div>

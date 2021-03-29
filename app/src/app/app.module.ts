@@ -15,6 +15,7 @@ import { GameDetailsComponent } from './gameList/game-details/game-details.compo
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   {path: 'main', component: MainPageComponent},
+  {path: 'game/:id', component: GameDetailsComponent},
   {path: 'games-list', component: ListComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
