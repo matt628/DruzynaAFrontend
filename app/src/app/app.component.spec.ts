@@ -26,6 +26,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Here will be displayed details of the game');
+    expect(compiled.querySelector('.welcome').textContent).toContain('Drużyna A');
   });
 });

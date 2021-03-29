@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { RouterTestingModule } from '@angular/router/testing'; 
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     BotDetailsComponent,
     BotsComponent,
     BotsItemComponent,
-
+    RouterTestingModule
   ],
   imports: [
     BrowserModule,
