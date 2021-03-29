@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "build:ci": "ng build --prod --sourceMap=false --base-href DruzynaAFrontend",
+    "build:ci": "ng build --prod --sourceMap=false --base-href app",
     "test:ci": "ng test --watch=false --code-coverage --source-map true",
     "e2e": "ng e2e"
   },
