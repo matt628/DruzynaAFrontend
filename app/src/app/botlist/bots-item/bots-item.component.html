@@ -1,13 +1,13 @@
 <div class="bot">
     <div class="bot-preview">
         <h6>Bot</h6>
-        <h2>{{bot.name}}</h2>
+        <h2 *ngIf="bot">{{bot.name}}</h2>
         <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
     </div>
     <div class="bot-info">
         <!-- <h6>Details</h6> -->
         <!-- <h2>Callbacks & Closures</h2> -->
-        <div class="bot-description">{{bot.description}}</div>
-        <button class="btn" [routerLink]="['..','bot', bot.id]">Szczegóły</button>
+        <div *ngIf="bot" class="bot-description">{{bot.description}}</div>
+        <button *ngIf="bot" class="btn" [routerLink]="['..','bot', bot.id]">Szczegóły</button>
     </div>
 </div>
