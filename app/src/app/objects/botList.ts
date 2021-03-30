@@ -7,7 +7,7 @@ export const BOTLIST: Bot[] = [
       "team": "a63hjb26jhaa",
       "games": ["60621f9c88473b3992763ce8"],
       "description": "Wheres some monke",
-      "photoURL": ""
+      "photoURL": "https://pbs.twimg.com/profile_images/604715031939432448/gHVN7XFP.jpg"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@ export const BOTLIST: Bot[] = [
       "team": "n3slbk5baj",
       "games": ["60621f9c88473b3992763ce8"],
       "description": "R",
-      "photoURL": ""
+      "photoURL": "https://pbs.twimg.com/profile_images/378800000389000515/13229d8e66962126e0ae0cb974c5ef95.jpeg"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@ export const BOTLIST: Bot[] = [
       "team": "a7K2BiUoUm",
       "games": ["60621f9c3a848f28d22108da"],
       "description": "People-Talking car-like robots relationship specialist",
-      "photoURL": ""
+      "photoURL": "https://pbs.twimg.com/profile_images/496874014212489217/MOC9UNLT.jpeg"
     },
     {
       "id": "4",
@@ -34,7 +34,7 @@ export const BOTLIST: Bot[] = [
       "team": "BVuVdi2o5m",
       "games": ["60621f9c3a848f28d22108da"],
       "description": "What is the point of all this violence?",
-      "photoURL": ""
+      "photoURL": "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/b/b0/JuARaVeInSy.png"
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@ export const BOTLIST: Bot[] = [
       "team": "UxCVmkyESg",
       "games": ["60621f9c3a848f28d22108da"],
       "description": "Hello there, I'm fancy glasses lady",
-      "photoURL": ""
+      "photoURL": "https://blendswap.com/static/blendImages/2019/07/07/Blend/94266/cd1548075116c327db5180bcc26c46a7.jpg"
     },
     {
       "id": "6",
@@ -52,7 +52,7 @@ export const BOTLIST: Bot[] = [
       "team": "OzfjogyytV",
       "games": ["60621f9c3a848f28d22108da"],
       "description": "So happy marvel had a lot of AI robots",
-      "photoURL": ""
+      "photoURL": "https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/41/Ultron_portrait.png"
     },
     {
       "id": "7",
@@ -61,6 +61,6 @@ export const BOTLIST: Bot[] = [
       "team": "LL6QGaB7Db",
       "games": ["60621f9c3a848f28d22108da"],
       "description": "Inifinitly stoned",
-      "photoURL": ""
+      "photoURL": "https://cdn2.iconfinder.com/data/icons/heroes-villains-vol-2-colored-1/100/Vision-128.png"
     }
   ]
