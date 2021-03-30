@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { GameDetailsComponent } from './game-details.component';
 
@@ -8,7 +9,9 @@ describe('GameDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameDetailsComponent ]
+      declarations: [ GameDetailsComponent,
+      RouterTestingModule ],
+      imports: [RouterTestingModule],
     })
     .compileComponents();
   });
