@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { GameDetailsComponent } from './game-details.component';
+import { BotDetailsComponent } from './bot-details.component';
 
-describe('GameDetailsComponent', () => {
-  let component: GameDetailsComponent;
-  let fixture: ComponentFixture<GameDetailsComponent>;
+describe('BotDetailsComponent', () => {
+  let component: BotDetailsComponent;
+  let fixture: ComponentFixture<BotDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameDetailsComponent ],
+      declarations: [ BotDetailsComponent ],
       imports: [RouterTestingModule],
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameDetailsComponent);
+    fixture = TestBed.createComponent(BotDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
