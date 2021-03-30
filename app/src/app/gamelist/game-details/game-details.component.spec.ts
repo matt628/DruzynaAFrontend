@@ -9,8 +9,7 @@ describe('GameDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameDetailsComponent,
-      RouterTestingModule ],
+      declarations: [ GameDetailsComponent ],
       imports: [RouterTestingModule],
     })
     .compileComponents();
