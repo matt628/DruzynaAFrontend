@@ -1,7 +1,46 @@
-<div class="background">
+<!-- <div class="background">
     <div class="center">
         <h1 class="welcome">Drużyna A
         </h1>
     </div>
 
-</div>
+</div> -->
+
+  <ngb-carousel class="w-100 h-100" style="overflow: hidden;" animation="true">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" >
+        <img src="https://aibusiness.pl/wp-content/uploads/2019/07/ML-1.jpg" class="d-block w-100 h-100 center-fit" alt="...">
+      </div>
+      <div class="carousel-caption">
+        <h3>Welcome to our league</h3>
+          <p>Here you have an opportunity to test out your ML skills in a unique way...</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://cdnb.artstation.com/p/assets/images/images/008/083/025/large/michael-muguira-scifiarenascreenshot1.jpg" class="d-block w-100 h-100" alt="...">
+      </div>
+      <div class="carousel-caption">
+        <h3>Enter the arena</h3>
+        <p>Choose a game you want to apply to</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="http://www.igorstshirts.com/blog/conceptrobots/2013/mandryk/mandryk_01.jpg" class="d-block w-100 h-100" alt="..." >
+      </div>
+      <div class="carousel-caption" style='color: black'>
+        <h3>Choose your fighter</h3>
+          <p>Upload your bot into the game</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="https://miro.medium.com/max/3840/1*vg5_QY5JPU0zcF07XWrD9g.png" class="d-block w-100 h-100" alt="...">
+      </div>
+      <div class="carousel-caption">
+        <h3>Be the best</h3>
+        <p>Improve your bot by accessing its logs after each game</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

@@ -23,10 +23,4 @@ describe('MainPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(MainPageComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.welcome').textContent).toContain('Drużyna A');
-  });
 });

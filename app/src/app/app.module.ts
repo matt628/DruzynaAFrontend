@@ -14,6 +14,7 @@ import { GameDetailsComponent } from './gamelist/game-details/game-details.compo
 import { BotDetailsComponent } from './botlist/bot-details/bot-details.component';
 import { BotsComponent } from './botlist/bots/bots.component';
 import { BotsItemComponent} from './botlist/bots-item/bots-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
