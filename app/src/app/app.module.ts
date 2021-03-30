@@ -38,7 +38,6 @@ const appRoutes: Routes = [
     BotDetailsComponent,
     BotsComponent,
     BotsItemComponent,
-    RouterTestingModule
   ],
   imports: [
     BrowserModule,
