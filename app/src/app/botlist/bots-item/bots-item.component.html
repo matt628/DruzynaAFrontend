@@ -1,6 +1,6 @@
-    <div class="card h-100">
+    <div *ngIf="bot" class="card h-100">
 
-        <ng-template *ngIf="bot && bot.photoURL; then botImg else defImg"></ng-template> 
+        <ng-template *ngIf="bot.photoURL; then botImg else defImg"></ng-template> 
         <ng-template #botImg>
             <img [src]="bot.photoURL" class="card-img-top avatarList" alt="BOT">
         </ng-template>
