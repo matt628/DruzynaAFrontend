@@ -15,6 +15,7 @@ import { BotDetailsComponent } from './botlist/bot-details/bot-details.component
 import { BotsComponent } from './botlist/bots/bots.component';
 import { BotsItemComponent} from './botlist/bots-item/bots-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BotuploadComponent } from './botlist/botupload/botupload.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     BotDetailsComponent,
     BotsComponent,
     BotsItemComponent,
+    BotuploadComponent,
   ],
   imports: [
     BrowserModule,
