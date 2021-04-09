@@ -7,6 +7,7 @@ import { GAMELIST } from '../objects/gameList';
   providedIn: 'root'
 })
 export class DatabaseGamesService {
+  URL = 'https://botcompetitionarena.herokuapp.com/';
   gameCollection: Game[] = GAMELIST
   constructor() { }
   getGameList() {
