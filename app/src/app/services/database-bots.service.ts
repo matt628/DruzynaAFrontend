@@ -11,4 +11,8 @@ export class DatabaseBotsService {
   getBotList(context) {
     return this.botsCollection; //It will be much more sophisticated, promise
   }
+
+  addBotToDatabase(bot: Bot){
+    // TODO
+  }
 }

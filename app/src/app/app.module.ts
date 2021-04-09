@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+
 import { Routes, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing'; 
 
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'games-list', component: ListComponent},
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
+  {path: 'add-bot', component: BotuploadComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule,
   ],
-  providers: [],
+  providers: [   
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
