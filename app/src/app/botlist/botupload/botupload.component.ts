@@ -10,12 +10,13 @@ import { DatabaseBotsService } from 'src/app/services/database-bots.service';
   styleUrls: ['./botupload.component.css']
 })
 export class BotuploadComponent implements OnInit {
-  bot:Bot
+  bot:Bot;
+  file: File;
 
   constructor(private dbService: DatabaseBotsService) { }
 
   ngOnInit(): void {
-    this.bot = this.getEmptyBotObject()
+    this.bot = this.getEmptyBotObject();
   }
 
   
@@ -29,17 +30,19 @@ export class BotuploadComponent implements OnInit {
       games: [],
 
     };
-    return bot
+    return bot;
   }
 
   addBot() {
     // TODO: check against bad input
-    this.dbService.addBotToDatabase(this.bot)
-    this.bot = this.getEmptyBotObject()
+    this.dbService.addBotToDatabase(this.bot, this.file);
+    this.bot = this.getEmptyBotObject();
+    this.file = null
   }
 
   onFileSelected(event) {
-
+    this.file = event.target.files[0];
+    
   }
 
   getRandomId():string {

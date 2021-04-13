@@ -1,15 +1,15 @@
 <div class="container">
-<p>Here will be bot list for the logged user or for specific game (or both, depending on Angular's flexibility)!</p>
-  <div class="row row-cols-1 row-cols-md-3">
-    <div *ngFor="let bot of botList"  class="col mb-4">
-        <app-bots-item [bot]="bot">
 
-        </app-bots-item>
+    <button class="ml-auto btn btn-secondary" routerLink="/add-bot">Dodaj swojego bota</button>
+    <p>Here will be bot list for the logged user or for specific game (or both, depending on Angular's flexibility)!</p>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div *ngFor="let bot of botList" class="col mb-4">
+            <app-bots-item [bot]="bot">
 
+            </app-bots-item>
+
+        </div>
     </div>
-    </div>
-<p>When you press on list item - you will see details of bot </p>
-<p>from bot details you can update bot</p>
+    <p>When you press on list item - you will see details of bot </p>
+    <p>from bot details you can update bot</p>
 </div>
-
-

@@ -12,7 +12,10 @@ export class DatabaseBotsService {
     return this.botsCollection; //It will be much more sophisticated, promise
   }
 
-  addBotToDatabase(bot: Bot){
+  addBotToDatabase(bot: Bot, photo: File) {
+    if (photo != null) {
+      
+    }
     // TODO
   }
 }
