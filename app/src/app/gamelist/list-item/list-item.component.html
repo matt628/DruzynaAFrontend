@@ -18,5 +18,7 @@
         <!-- <h2>Callbacks & Closures</h2> -->
         <div *ngIf="game" class="game-description">{{game.shortDescription}}</div>
         <button *ngIf="game" class="btn" [routerLink]="['..','game', game.id]">Details</button>
+        <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button>
+
     </div>
 </div>
