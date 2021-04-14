@@ -16,7 +16,11 @@ export class ListComponent implements OnInit {
   }
 
   getAllGames() {
-   this.gameList = this.dbService.getGameList()
+   this.dbService.getGameList().subscribe((response) => {
+     console.log(response);
+     this.gameList = response;
+
+   })
   }
 
 }

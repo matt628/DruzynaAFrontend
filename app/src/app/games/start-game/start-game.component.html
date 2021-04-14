@@ -1,0 +1,38 @@
+<div class='container'>
+    <form class='mt-2' [formGroup]='uploadGame' (ngSubmit)="submit()">
+
+        <div>
+            Game id: {{id | async}}
+        </div>
+        <div class="form-group">
+            <label class='mr-1'>Name </label>
+            <input formControlName="name">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" formControlName="deadline"
+                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('deadline', 'required')">This field is required</ng-container>
+            </div>
+          </div>
+    
+        <div class="form-group">
+            <app-file-upload formControlName="config" [progress]="progress"></app-file-upload> 
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('config', 'required')">This field is required</ng-container>
+                <ng-container *ngIf="hasError('config', 'requiredFileType')">Only .py 🤡</ng-container>
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Open game</button>
+    
+    </form>
+</div>

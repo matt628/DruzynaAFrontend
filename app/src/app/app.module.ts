@@ -20,6 +20,7 @@ import { NewGameComponent } from './games/new-game/new-game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './upload/file-upload/file-upload.component';
 import { ProgressComponent } from './upload/progress/progress.component';
+import { StartGameComponent } from './games/start-game/start-game.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
   {path: 'add-game', component: NewGameComponent},
+  {path: 'start-game/:id', component: StartGameComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     BotsItemComponent,
     FileUploadComponent,
     ProgressComponent,
-    NewGameComponent
+    NewGameComponent,
+    StartGameComponent
   ],
   imports: [
     BrowserModule,
