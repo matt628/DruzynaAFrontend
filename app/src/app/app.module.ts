@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { Routes, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,6 +18,11 @@ import { BotsComponent } from './botlist/bots/bots.component';
 import { BotsItemComponent} from './botlist/bots-item/bots-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BotuploadComponent } from './botlist/botupload/botupload.component';
+import { NewGameComponent } from './games/new-game/new-game.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FileUploadComponent } from './upload/file-upload/file-upload.component';
+import { ProgressComponent } from './upload/progress/progress.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -25,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'games-list', component: ListComponent},
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
+  {path: 'add-game', component: NewGameComponent},
   {path: 'add-bot', component: BotuploadComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
@@ -42,13 +49,19 @@ const appRoutes: Routes = [
     BotDetailsComponent,
     BotsComponent,
     BotsItemComponent,
+    FileUploadComponent,
+    ProgressComponent,
+    NewGameComponent
     BotuploadComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     RouterModule.forRoot(appRoutes),
+    RouterTestingModule,
     NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [   
   ],
