@@ -1,0 +1,30 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 5vh;
+    /* border: black solid 2px; */
+}
+
+.title-container {
+    margin: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: none;
+    padding: none;
+    line-height: 0.2;
+}
+
+p {
+    color: gray;
+    font-weight: lighter;
+    font-size: smaller;
+    margin: none;
+}

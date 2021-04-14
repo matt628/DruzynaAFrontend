@@ -16,6 +16,7 @@ import { BotDetailsComponent } from './botlist/bot-details/bot-details.component
 import { BotsComponent } from './botlist/bots/bots.component';
 import { BotsItemComponent} from './botlist/bots-item/bots-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BotuploadComponent } from './botlist/botupload/botupload.component';
 import { NewGameComponent } from './games/new-game/new-game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './upload/file-upload/file-upload.component';
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
   {path: 'add-game', component: NewGameComponent},
+  {path: 'add-bot', component: BotuploadComponent},
   {path: 'start-game/:id', component: StartGameComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
     FileUploadComponent,
     ProgressComponent,
     NewGameComponent,
+    BotuploadComponent,
     StartGameComponent
   ],
   imports: [
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [   
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

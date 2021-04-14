@@ -1,0 +1,32 @@
+<div class="title-container">
+    <h1>Wejdź do gry!</h1>
+    <p>Dodaj swojego bota</p>
+</div>
+
+<div class="form-wrapper">
+    <form id="form">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nazwa bota</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="bot.name" name="exampleInputEmail1">
+        </div>
+        <div class="mb-3">
+            <label for="botVersion" class="form-label">Wersja bota</label>
+            <input class="form-control" id="botVersion" [(ngModel)]="bot.version" name="botVersion">
+        </div>
+
+        <div class="mb-3">
+            <label for="descriptionInput" class="form-label">Opis bota</label>
+            <textarea class="form-control" id="descriptionInput" [(ngModel)]="bot.description" name="descriptionInput"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="botPhoto" class="form-label">Zip Bota</label>
+            <input class="form-control" id="botPhoto" type="file" (change)="onFileSelected($event)">
+        </div>
+        <!--  -->
+        <!-- <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <button type="submit" class="btn btn-primary" (click)="addBot()">Dodaj bota</button>
+    </form>
+</div>

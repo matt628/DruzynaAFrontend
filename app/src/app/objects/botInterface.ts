@@ -1,4 +1,4 @@
-export interface Bot {
+export interface Bot { // TODO reafactor when backend ready
     id:string,
     name:string,
     version:string,
@@ -6,4 +6,5 @@ export interface Bot {
     games:string[],
     description?: string,
     photoURL?: string,
+    zip?: File
 }
