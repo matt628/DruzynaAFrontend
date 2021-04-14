@@ -4,22 +4,22 @@
 </div>
 
 <div class="form-wrapper">
-    <form>
+    <form id="form">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nazwa bota</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="bot.name">
+            <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="bot.name" name="exampleInputEmail1">
         </div>
         <div class="mb-3">
             <label for="botVersion" class="form-label">Wersja bota</label>
-            <input class="form-control" id="botVersion" [(ngModel)]="bot.version">
+            <input class="form-control" id="botVersion" [(ngModel)]="bot.version" name="botVersion">
         </div>
 
         <div class="mb-3">
             <label for="descriptionInput" class="form-label">Opis bota</label>
-            <textarea class="form-control" id="descriptionInput" [(ngModel)]="bot.description"></textarea>
+            <textarea class="form-control" id="descriptionInput" [(ngModel)]="bot.description" name="descriptionInput"></textarea>
         </div>
         <div class="mb-3">
-            <label for="botPhoto" class="form-label">Zdjęcie</label>
+            <label for="botPhoto" class="form-label">Zip Bota</label>
             <input class="form-control" id="botPhoto" type="file" (change)="onFileSelected($event)">
         </div>
         <!--  -->
