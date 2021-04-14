@@ -72,6 +72,7 @@ export class NewGameComponent implements OnInit{
   }
 }
 
+
 export function markAllAsDirty( form: FormGroup ) {
   for ( const control of Object.keys(form.controls) ) {
     form.controls[control].markAsDirty();
@@ -104,5 +105,9 @@ export function requiredFileType(type: string): import("@angular/forms").Validat
     }
     return null;
   };
+
+
+  
+
 }
 
