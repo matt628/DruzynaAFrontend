@@ -29,8 +29,17 @@ export class DatabaseGamesService {
         'Access-Control-Allow-Origin': '*',
       }),
     };
-    
+
+   
     return this.http.get<Game[]>(this.URL, httpOptions);
   }
+
+  getQueueByGameId(gameID){
+    // TODO: implement
+    return {
+
+    }
+  }
+  
 
 }
