@@ -29,17 +29,22 @@ export function toResponseBody<T>() {
 export class NewGameComponent implements OnInit{
   progress = 0;
 
-  uploadGame = new FormGroup({
-    name: new FormControl(null, Validators.required),
-    version: new FormControl(null, Validators.required),
-    payload: new FormControl(null, [Validators.required, requiredFileType('zip')])
-  });
+  uploadGame: FormGroup;
   success = false;
 
   constructor(private http: HttpClient) {
 
   }
   ngOnInit(): void {
+    this.uploadGame = this.createEmptyGame();
+  }
+
+  createEmptyGame() {
+    return new FormGroup({
+      name: new FormControl(null, Validators.required),
+      version: new FormControl(null, Validators.required),
+      payload: new FormControl(null, [Validators.required, requiredFileType('zip')])
+    });
   }
 
   submit() {
@@ -63,7 +68,17 @@ export class NewGameComponent implements OnInit{
       this.progress = 0;
       this.success = true;
       this.uploadGame.reset();
+      this.showRespone(res);
     });
+    this.uploadGame = this.createEmptyGame();
+
+  }
+
+  showRespone(res){
+    console.log(res)
+    alert(`Response from server:\n
+            ${res}`)
+
   }
 
   hasError( field: string, error: string ) {
