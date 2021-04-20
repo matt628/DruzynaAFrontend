@@ -32,6 +32,8 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   {path: 'main', component: MainPageComponent},
   {path: 'game/:id', component: GameDetailsComponent},
+  {path: 'game-edit/:id', component: GameDetailsEditComponent},
+  {path: 'queue/:id', component: QueueDetailsComponent},
   {path: 'games-list', component: ListComponent},
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list

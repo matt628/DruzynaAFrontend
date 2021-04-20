@@ -18,7 +18,7 @@
         <!-- <h6>Details</h6> -->
         <!-- <h2>Callbacks & Closures</h2> -->
         <div *ngIf="queue" class="game-description">{{queue.deadline}}</div>
-        <button *ngIf="queue" class="btn">Details</button>
+        <button *ngIf="queue" class="btn" [routerLink]="['/queue', queue.ID]">Details</button>
         <!-- TODO: start GAME -->
         <!-- <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button> -->
 
