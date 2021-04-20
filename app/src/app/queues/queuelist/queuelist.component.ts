@@ -10,14 +10,14 @@ import { DatabaseGamesService } from 'src/app/services/database-games.service';
 export class QueuelistComponent implements OnInit {
 
   constructor(private database: DatabaseGamesService) { }
-  queueList: [Queue];
+  queueList: Queue[];
   @Input() gameId;
   ngOnInit(): void {
-    this.getQueueByGameId();
+    this.queueList = this.getQueueByGameId();
   }
 
   getQueueByGameId() {
-    this.database.getQueueByGameId(this.gameId);
+    return this.database.getQueueByGameId(this.gameId);
   }
 
 }

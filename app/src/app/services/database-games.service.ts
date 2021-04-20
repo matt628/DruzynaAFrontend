@@ -4,6 +4,8 @@ import { GAMELIST } from '../objects/gameList';
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { pipe } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { QUEUELIST } from '../objects/queueList';
+import { Queue } from '../objects/queueInterface';
 
 export function toResponseBody<T>() {
   return pipe(
@@ -18,6 +20,7 @@ export function toResponseBody<T>() {
 export class DatabaseGamesService {
   URL = 'https://botcompetitionarena.herokuapp.com/games';
   gameCollection: Game[] = GAMELIST
+  queueCollectionForGame1: Queue[] = QUEUELIST;
 
   
 
@@ -36,9 +39,7 @@ export class DatabaseGamesService {
 
   getQueueByGameId(gameID){
     // TODO: implement
-    return {
-
-    }
+    return this.queueCollectionForGame1;
   }
   
 

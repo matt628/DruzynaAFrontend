@@ -8,12 +8,12 @@ import { catchError, switchMap } from 'rxjs/operators';
   styleUrls: ['./game-details.component.css']
 })
 export class GameDetailsComponent implements OnInit {
-  id: string;
+  gameId: string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.url[1].path
+    this.gameId = this.route.snapshot.url[1].path
     // switchMap() use to change observable type // todo after connection with backend
   }
 
