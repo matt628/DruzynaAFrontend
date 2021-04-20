@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Queue } from 'src/app/objects/queueInterface';
+import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseGamesService } from 'src/app/services/database-games.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DatabaseGamesService } from 'src/app/services/database-games.service';
 })
 export class QueuelistComponent implements OnInit {
 
-  constructor(private database: DatabaseGamesService) { }
+  constructor(private database: DatabaseGamesService, private auth: AuthService) { }
   queueList: Queue[];
   @Input() gameId;
   ngOnInit(): void {
@@ -18,6 +19,11 @@ export class QueuelistComponent implements OnInit {
 
   getQueueByGameId() {
     return this.database.getQueueByGameId(this.gameId);
+  }
+
+  
+  isUserAdmin() {
+    return this.auth.isAdmin()
   }
 
 }

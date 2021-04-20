@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Queue } from 'src/app/objects/queueInterface';
 
 @Component({
   selector: 'app-queueitem',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./queueitem.component.css']
 })
 export class QueueitemComponent implements OnInit {
-  @Input() queue;
+  @Input() queue: Queue;
 
   constructor() { }
 
