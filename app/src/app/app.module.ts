@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './upload/file-upload/file-upload.component';
 import { ProgressComponent } from './upload/progress/progress.component';
 import { StartGameComponent } from './games/start-game/start-game.component';
+import { QueueDetailsComponent } from './queue/queue-details/queue-details.component';
 
 
 const appRoutes: Routes = [
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
   {path: 'add-game', component: NewGameComponent},
   {path: 'add-bot', component: BotuploadComponent},
   {path: 'start-game/:id', component: StartGameComponent},
+  {path: 'queue/:id', component: QueueDetailsComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     ProgressComponent,
     NewGameComponent,
     BotuploadComponent,
-    StartGameComponent
+    StartGameComponent,
+    QueueDetailsComponent
   ],
   imports: [
     BrowserModule,

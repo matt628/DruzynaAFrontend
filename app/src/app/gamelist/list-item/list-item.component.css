@@ -91,7 +91,7 @@
     letter-spacing: 1px;
 }
 
-.btn {
+/* .btn {
     background-color: #2A265F;
     border: 0;
     border-radius: 50px;
@@ -103,7 +103,7 @@
     bottom: 30px;
     right: 30px;
     letter-spacing: 1px;
-}
+} */
 
 
 /* SOCIAL PANEL CSS */
@@ -264,4 +264,8 @@
     .floating-btn {
         right: 10px;
     }
+}
+
+.avatarList {
+    max-height: 200px; object-fit: cover;
 }
