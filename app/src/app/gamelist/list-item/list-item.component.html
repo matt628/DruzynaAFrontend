@@ -1,25 +1,42 @@
-<div class="course">
+<!-- <div class="course">
     <div class="course-preview">
         <h6>Tournament</h6>
         <h2 *ngIf="game">{{game.name}}</h2>
-        <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
+        <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> 
     </div>
     <div class="course-info">
-        <div class="progress-wrapper">
+         <div class="progress-wrapper">
             <div class="progress-container">
                 <div class="progress"></div>
-                <!-- TODO set progress witdh to appropite width -->
+                 TODO set progress witdh to appropite width
                 <span *ngIf="game" class="progress-text">
                 {{game.currentBattleNumer}}/{{game.totalBattleNumler}} Battle
             </span>
             </div>
-        </div>
-        <!-- <h6>Details</h6> -->
-        <!-- <h2>Callbacks & Closures</h2> -->
+        </div> 
+        <h6>Details</h6>
+        <h2>Callbacks & Closures</h2>
         <div *ngIf="game" class="game-description">{{game.shortDescription}}</div>
-        <button *ngIf="game" class="btn" [routerLink]="['..','game', game.id]">Details</button>
-        <!-- TODO: start GAME -->
-        <!-- <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button> -->
+        <button *ngIf="game" class="btn btn-primary m-3 ml-auto" [routerLink]="['..','start-game', game.id]">Start Game</button>
+        <button *ngIf="game" class="btn btn-primary m-3" [routerLink]="['..','game', game.id]">Details</button>
 
     </div>
-</div>
+</div> -->
+
+<div *ngIf="game" class="card h-100">
+
+    <ng-template *ngIf="game.photoURL; then botImg else defImg"></ng-template> 
+    <ng-template #botImg>
+        <img [src]="game.photoURL" class="card-img-top avatarList" alt="BOT">
+    </ng-template>
+    <ng-template #defImg>
+        <img src="https://i.pinimg.com/474x/15/d8/4b/15d84b52840a4760b0451351dad4bddb.jpg" class="card-img-top avatarList" alt="DEFBOT">
+    </ng-template>
+
+    <div class="card-body">
+      <h5 class="card-title">{{game.name}}</h5>
+      <p class="card-text">{{game.shortDescription}}</p>
+      <button *ngIf="game" class="ml-auto mr-1 btn btn-primary" [routerLink]="['..','game', game.id]">Details</button>
+      <button *ngIf="game" class="btn btn-success" [routerLink]="['..','start-game', game.id]">New queue</button>
+    </div>
+  </div>

@@ -1,9 +1,17 @@
 <div class="container">
-    <button routerLink="/add-game">Add a new game!</button>
-    <ng-container *ngFor="let game of gameList">
-        <app-list-item [game]="game">
+    <div class="mt-2 row row-cols-1 row-cols-md-3">
+        <button class="btn btn-secondary m-2" routerLink="/add-game">Add a new game!</button>
 
-        </app-list-item>
-    </ng-container>
+        <div *ngFor="let game of gameList" class="col mb-4">
+            <app-list-item [game]="game">
 
-</div>
+            </app-list-item>
+
+        </div>
+    </div>
+<!-- <ng-container *ngFor="let game of gameList">
+    <app-list-item [game]="game">
+
+    </app-list-item>
+</ng-container> -->
+

@@ -40,6 +40,7 @@ const appRoutes: Routes = [
   {path: 'add-game', component: NewGameComponent},
   {path: 'add-bot', component: BotuploadComponent},
   {path: 'start-game/:id', component: StartGameComponent},
+  {path: 'queue/:id', component: QueueDetailsComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
