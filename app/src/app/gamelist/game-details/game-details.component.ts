@@ -11,7 +11,6 @@ import { DatabaseGamesService } from '../../services/database-games.service';
 })
 export class GameDetailsComponent implements OnInit {
   game: Observable<Game>;
-  name;
   gameId: string;
 
   constructor(private route: ActivatedRoute, private gameService: DatabaseGamesService) { }
@@ -19,8 +18,7 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.gameId = this.route.snapshot.url[1].path
-    this.game = this.gameService.getGame(this.gameId) //todo: gets last id char
-    
+    this.game = this.gameService.getGame(this.gameId)
     // switchMap() use to change observable type // todo after connection with backend
   }
 
