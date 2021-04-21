@@ -21,5 +21,9 @@ export class AuthService {
   getUserRole() {
     return this.user.role;
   }
+
+  isAdmin() {
+    return this.user.role === 'admin' ? true : false
+  }
   
 }

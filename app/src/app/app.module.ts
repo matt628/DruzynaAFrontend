@@ -22,12 +22,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './upload/file-upload/file-upload.component';
 import { ProgressComponent } from './upload/progress/progress.component';
 import { StartGameComponent } from './games/start-game/start-game.component';
+import { QueuelistComponent } from './queues/queuelist/queuelist.component';
+import { QueueitemComponent } from './queues/queueitem/queueitem.component';
+import { GameDetailsEditComponent } from './games/game-details-edit/game-details-edit.component';
+import { QueueDetailsComponent } from './queues/queue-details/queue-details.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   {path: 'main', component: MainPageComponent},
   {path: 'game/:id', component: GameDetailsComponent},
+  {path: 'game-edit/:id', component: GameDetailsEditComponent},
+  {path: 'queue/:id', component: QueueDetailsComponent},
   {path: 'games-list', component: ListComponent},
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
@@ -54,7 +60,11 @@ const appRoutes: Routes = [
     ProgressComponent,
     NewGameComponent,
     BotuploadComponent,
-    StartGameComponent
+    StartGameComponent,
+    QueuelistComponent,
+    QueueitemComponent,
+    GameDetailsEditComponent,
+    QueueDetailsComponent
   ],
   imports: [
     BrowserModule,

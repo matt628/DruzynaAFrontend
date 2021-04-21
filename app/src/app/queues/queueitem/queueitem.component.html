@@ -1,7 +1,7 @@
 <div class="course">
     <div class="course-preview">
-        <h6>Tournament</h6>
-        <h2 *ngIf="game">{{game.name}}</h2>
+        <h6>Queue</h6>
+        <h2 *ngIf="queue">{{queue.name}}</h2>
         <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
     </div>
     <div class="course-info">
@@ -9,15 +9,16 @@
             <div class="progress-container">
                 <div class="progress"></div>
                 <!-- TODO set progress witdh to appropite width -->
-                <span *ngIf="game" class="progress-text">
-                {{game.currentBattleNumer}}/{{game.totalBattleNumler}} Battle
+                <span *ngIf="queue" class="progress-text">
+                3 Days left
+                <!-- TODO: Update date ^^^ -->
             </span>
             </div>
         </div>
         <!-- <h6>Details</h6> -->
         <!-- <h2>Callbacks & Closures</h2> -->
-        <div *ngIf="game" class="game-description">{{game.shortDescription}}</div>
-        <button *ngIf="game" class="btn" [routerLink]="['..','game', game.id]">Details</button>
+        <div *ngIf="queue" class="game-description">{{queue.deadline}}</div>
+        <button *ngIf="queue" class="btn" [routerLink]="['/queue', queue.ID]">Details</button>
         <!-- TODO: start GAME -->
         <!-- <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button> -->
 

@@ -1,0 +1,12 @@
+<div class="container">
+    <div *ngIf="isUserAdmin()">
+        <button [routerLink]="['/start-game', gameId]">Utwórz nową kolejkę</button>
+        <button [routerLink]="['/game-edit', gameId]">Edytuj szczegóły gry</button>
+    </div>
+    <ng-container *ngFor=" let queue of queueList ">
+        <app-queueitem [queue]="queue ">
+
+        </app-queueitem>
+    </ng-container>
+
+</div>
