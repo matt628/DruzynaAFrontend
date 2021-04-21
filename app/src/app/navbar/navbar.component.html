@@ -1,15 +1,16 @@
-
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand active"  routerLink="main" routerLinkActive="active">The A Team</a>
+    <a class="navbar-brand active" routerLink="main" routerLinkActive="active">The A Team</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" routerLink="main" routerLinkActive="active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-link" routerLink="games-list" routerLinkActive="active">Games</a>
-          <a class="nav-link" routerLink="bots-list" routerLinkActive="active">Bots</a>
-          <a class="nav-link" routerLink="add-game" routerLinkActive="active">Add game</a>
+            <a class="nav-link" routerLink="main" routerLinkActive="active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="games-list" routerLinkActive="active">Games</a>
+            <a class="nav-link" routerLink="bots-list" routerLinkActive="active">Bots</a>
+            <a class="nav-link">Your role: {{getUserRole()}}</a>
+            <a class="nav-link" (click)="setUserRoleToAdmin()">Set role to admin</a>
+            <a class="nav-link" (click)="setUserRoleToUser()">Set role to user</a>
         </div>
-      </div>
-  </nav>
+    </div>
+</nav>

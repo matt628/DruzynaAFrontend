@@ -10,21 +10,17 @@ import { DatabaseGamesService } from '../../services/database-games.service';
   styleUrls: ['./game-details.component.css']
 })
 export class GameDetailsComponent implements OnInit {
-  id: Observable<string>;
   game: Observable<Game>;
   name;
+  gameId: string;
 
   constructor(private route: ActivatedRoute, private gameService: DatabaseGamesService) { }
 
   ngOnInit(): void {
-    this.id = this.route.paramMap.pipe(
-      switchMap((params) => params.get('id')
-      ), catchError(err => of("")) //todo: gets last id char
-    )
-    this.game = this.route.paramMap.pipe(
-      switchMap((params) => this.gameService.getGame(params.get('id'))
-      ), catchError(err => of(this.gameService.getEmptyGame())) //todo: gets last id char
-    )
+
+    this.gameId = this.route.snapshot.url[1].path
+    this.game = this.gameService.getGame(this.gameId) //todo: gets last id char
+    
     // switchMap() use to change observable type // todo after connection with backend
   }
 

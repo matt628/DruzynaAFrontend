@@ -1,6 +1,7 @@
 export interface Queue {
-    id: string,
-    gameId: string,
-    deadline: Date,
-    
+    ID?: string;
+    parentGameID?: string;
+    name: string,
+    deadline: string,
+    configuration?
 }

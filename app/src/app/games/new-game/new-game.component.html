@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label class='mr-1'>Name </label>
-            <input formControlName="name">
+            <input formControlName="name" id="name-value">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
             </div>
@@ -42,20 +42,18 @@
                 <ng-container *ngIf="hasError('version', 'required')">This field is required</ng-container>
             </div>
         </div>
-    
+
         <div class="form-group">
-            <app-file-upload formControlName="payload" [progress]="progress"></app-file-upload> 
+            <app-file-upload formControlName="payload" [progress]="progress"></app-file-upload>
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
                 <ng-container *ngIf="hasError('payload', 'requiredFileType')">Only zip 🤡</ng-container>
             </div>
         </div>
-    
+
         <button type="submit" class="btn btn-primary">Submit</button>
-    
+
     </form>
 
 
 </div>
-
-
