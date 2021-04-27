@@ -26,6 +26,9 @@ import { QueuelistComponent } from './queues/queuelist/queuelist.component';
 import { QueueitemComponent } from './queues/queueitem/queueitem.component';
 import { GameDetailsEditComponent } from './games/game-details-edit/game-details-edit.component';
 import { QueueDetailsComponent } from './queues/queue-details/queue-details.component';
+import { QueueStatusComponent } from './queues/queue-status/queue-status.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 
 const appRoutes: Routes = [
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
   {path: 'add-bot', component: BotuploadComponent},
   {path: 'start-game/:id', component: StartGameComponent},
   {path: 'queue/:id', component: QueueDetailsComponent},
+  {path: 'queuestatus', component: QueueStatusComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -65,7 +69,8 @@ const appRoutes: Routes = [
     QueuelistComponent,
     QueueitemComponent,
     GameDetailsEditComponent,
-    QueueDetailsComponent
+    QueueDetailsComponent,
+    QueueStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [   
   ],

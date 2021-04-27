@@ -11,7 +11,8 @@ import { DatabaseGamesService } from '../../services/database-games.service';
 })
 export class GameDetailsComponent implements OnInit {
   game: Observable<Game>;
-  name;
+  name: string
+  description: string
   gameId: string;
 
   constructor(private route: ActivatedRoute, private gameService: DatabaseGamesService) { }
@@ -20,6 +21,12 @@ export class GameDetailsComponent implements OnInit {
 
     this.gameId = this.route.snapshot.url[1].path
     this.game = this.gameService.getGame(this.gameId) //todo: gets last id char
+    this.game.subscribe(q => {
+      console.log(q)
+      console.log(q.name)
+      this.name = q.name
+      this.description = q.shortDescription
+    })
     
     // switchMap() use to change observable type // todo after connection with backend
   }

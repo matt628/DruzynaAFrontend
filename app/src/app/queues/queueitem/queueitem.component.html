@@ -20,7 +20,9 @@
         <div *ngIf="queue" class="game-description">{{queue.deadline}}</div>
         <button *ngIf="queue" class="btn" [routerLink]="['/queue', queue.ID]">Details</button>
         <!-- TODO: start GAME -->
+        <ng-container *ngIf='canStart'>
         <!-- <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button> -->
+        </ng-container>
 
     </div>
 </div>
