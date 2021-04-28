@@ -16,7 +16,7 @@ export class DatabaseQueueService {
   getEmptyQueue(): any {
     return of({ID: '-1', parentGameID: 1, name: 'empty', 'deadline': ''})
   }
-  getQueue(arg0: string): any {
+  getQueue(id: string): any {
     return of("");
   }
 
