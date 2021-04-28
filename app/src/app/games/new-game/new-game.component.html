@@ -1,12 +1,12 @@
 <!-- <div class="container">
     <h1>Upload new game</h1>
     <form>
-        <div class="form-group">
+        <div class="mb-3">
           <label for="inputName">Name</label>
           <input  class="form-control" id="inputName" aria-describedby="emailHelp">
           <small id="emailHelp" class="form-text text-muted">Enter name of the game</small>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
           <label for="inputVersion">Version</label>
           <input class="form-control" id="inputVersion">
         </div>
@@ -25,25 +25,28 @@
 
      
 </div> -->
-<div class='container'>
-    <form class='mt-2' [formGroup]='uploadGame' (ngSubmit)="submit()">
-
-        <div class="form-group">
-            <label class='mr-1'>Name </label>
+<div class="title-container">
+    <h1>Create your own universe!</h1>
+    <p>Divide and conquer!</p>
+</div>
+<div class="form-wrapper">
+    <form id='form' [formGroup]='uploadGame' (ngSubmit)="submit()">
+        <div class="mb-3">
+            <label class="form-label">Name </label>
             <input formControlName="name" id="name-value">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
             </div>
         </div>
-        <div class="form-group">
-            <label class='mr-1'>Version </label>
+        <div class="mb-3">
+            <label class="form-label">Version </label>
             <input formControlName="version">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('version', 'required')">This field is required</ng-container>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <app-file-upload formControlName="payload" [progress]="progress"></app-file-upload>
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
@@ -54,6 +57,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
-
-
 </div>
