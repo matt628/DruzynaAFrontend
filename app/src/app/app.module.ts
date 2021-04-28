@@ -28,7 +28,8 @@ import { GameDetailsEditComponent } from './games/game-details-edit/game-details
 import { QueueDetailsComponent } from './queues/queue-details/queue-details.component';
 import { QueueStatusComponent } from './queues/queue-status/queue-status.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { LoginPageComponent } from './login/login-page/login-page.component'; 
 
 
 const appRoutes: Routes = [
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   {path: 'start-game/:id', component: StartGameComponent},
   {path: 'queue/:id', component: QueueDetailsComponent},
   {path: 'queuestatus', component: QueueStatusComponent},
+  {path: 'login', component: LoginPageComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     QueueitemComponent,
     GameDetailsEditComponent,
     QueueDetailsComponent,
-    QueueStatusComponent
+    QueueStatusComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
