@@ -1,0 +1,8 @@
+
+<div class="container mt-5">
+    <div>
+        <label>Queue progress</label>
+        <mat-progress-bar mode="determinate" [value]='progress | async'></mat-progress-bar>
+        <label>Estimated time remaining: {{remaining | async}}</label>
+    </div>
+ </div>

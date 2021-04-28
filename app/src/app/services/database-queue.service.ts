@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
-
-
 
 
 @Injectable({
@@ -15,10 +14,10 @@ export class DatabaseQueueService {
   }
 
   getEmptyQueue(): any {
-    throw new Error('Method not implemented.');
+    return of({ID: '-1', parentGameID: 1, name: 'empty', 'deadline': ''})
   }
   getQueue(arg0: string): any {
-    throw new Error('Method not implemented.');
+    return of("");
   }
 
   getQueueLogs(id: string){

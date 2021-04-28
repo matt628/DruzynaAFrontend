@@ -8,7 +8,7 @@ import { Queue } from 'src/app/objects/queueInterface';
 })
 export class QueueitemComponent implements OnInit {
   @Input() queue: Queue;
-
+  canStart: boolean;
   constructor() { }
 
   ngOnInit(): void {
