@@ -25,5 +25,10 @@ export class AuthService {
   isAdmin() {
     return this.user.role === 'admin' ? true : false
   }
+
+  login(username: string, password: string) {
+    console.log("Wysyłam zapytanie do backendu")
+    this.user.role = "admin"
+  }
   
 }
