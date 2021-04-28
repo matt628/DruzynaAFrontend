@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { Game } from 'src/app/objects/gameInterface';
+import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseGamesService } from '../../services/database-games.service';
 @Component({
   selector: 'app-game-details',
@@ -15,7 +16,7 @@ export class GameDetailsComponent implements OnInit {
   description: string
   gameId: string;
 
-  constructor(private route: ActivatedRoute, private gameService: DatabaseGamesService) { }
+  constructor(private route: ActivatedRoute, private gameService: DatabaseGamesService, private auth: AuthService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +27,10 @@ export class GameDetailsComponent implements OnInit {
       this.description = q.shortDescription
     })
         // switchMap() use to change observable type // todo after connection with backend
+  }
+
+  isUserAdmin() {
+    return this.auth.isAdmin()
   }
 
 }
