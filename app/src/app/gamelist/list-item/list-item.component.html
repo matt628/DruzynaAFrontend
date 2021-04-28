@@ -25,7 +25,7 @@
 
 <div *ngIf="game" class="card h-100">
 
-    <ng-template *ngIf="game.photoURL; then botImg else defImg"></ng-template> 
+    <ng-template *ngIf="game.photoURL; then botImg else defImg"></ng-template>
     <ng-template #botImg>
         <img [src]="game.photoURL" class="card-img-top avatarList" alt="BOT">
     </ng-template>
@@ -34,9 +34,12 @@
     </ng-template>
 
     <div class="card-body">
-      <h5 class="card-title">{{game.name}}</h5>
-      <p class="card-text">{{game.shortDescription}}</p>
-      <button *ngIf="game" class="ml-auto mr-1 btn btn-primary" [routerLink]="['..','game', game.id]">Details</button>
-      <button *ngIf="game" class="btn btn-success" [routerLink]="['..','start-game', game.id]">New queue</button>
+        <h5 class="card-title">{{game.name}}</h5>
+        <p class="card-text">{{game.shortDescription}}</p>
+        <button *ngIf="game" class="ml-auto mr-1 btn btn-primary" [routerLink]="['..','game', game.id]">Details</button>
+        <ng-container *ngIf="isUserAdmin()">
+            <button *ngIf="game " class="btn btn-success " [routerLink]="[ '..', 'start-game', game.id] ">New queue</button>
+        </ng-container>
+
     </div>
-  </div>
+</div>
