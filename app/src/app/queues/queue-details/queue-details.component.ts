@@ -17,17 +17,20 @@ export class QueueDetailsComponent implements OnInit {
   name: Observable<string>;
   deadline: Observable<string>;
   URL = 'https://botompetitionarena.herokuapp.com/'
+  logs: any;
   
 
-  constructor(private route: ActivatedRoute, private queueService: DatabaseQueueService, private authService: AuthService, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private queueDb: DatabaseQueueService, private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.queueID = this.route.snapshot.url[1].path
-    this.queue = this.queueService.getQueue(this.queueID)
+    this.queue = this.queueDb.getQueue(this.queueID)
     this.queue.subscribe(q => {
       this.name = of(q.name)
       this.deadline = of(q.deadline)
     })
+    this.getLogsByQueueId(this.queueID)
+
   }
 
   isAdmin() {
@@ -47,5 +50,12 @@ export class QueueDetailsComponent implements OnInit {
     };
      const Url = this.URL +'/run-queue/' + this.queueID;
      this.http.get(Url, httpOptions);
+  }
+
+  getLogsByQueueId(queueID) {
+    return this.queueDb.getQueueLogs(queueID).subscribe((response) => {
+      console.log(response);
+      this.logs = response;
+    })
   }
 }

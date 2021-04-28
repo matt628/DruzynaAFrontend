@@ -20,15 +20,12 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.gameId = this.route.snapshot.url[1].path
-    this.game = this.gameService.getGame(this.gameId) //todo: gets last id char
+    this.game = this.gameService.getGame(this.gameId)
     this.game.subscribe(q => {
-      console.log(q)
-      console.log(q.name)
       this.name = q.name
       this.description = q.shortDescription
     })
-    
-    // switchMap() use to change observable type // todo after connection with backend
+        // switchMap() use to change observable type // todo after connection with backend
   }
 
 }
