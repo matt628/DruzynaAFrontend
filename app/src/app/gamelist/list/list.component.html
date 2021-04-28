@@ -1,6 +1,6 @@
 <div class="container">
     <div class="mt-2 row row-cols-1 row-cols-md-3">
-        <button class="btn btn-secondary m-2" routerLink="/add-game">Add a new game!</button>
+        <button *ngIf="isUserAdmin()" class="btn btn-secondary m-2" routerLink="/add-game">Add a new game!</button>
 
         <div *ngFor="let game of gameList" class="col mb-4">
             <app-list-item [game]="game">
@@ -9,9 +9,8 @@
 
         </div>
     </div>
-<!-- <ng-container *ngFor="let game of gameList">
+    <!-- <ng-container *ngFor="let game of gameList">
     <app-list-item [game]="game">
 
     </app-list-item>
 </ng-container> -->
-

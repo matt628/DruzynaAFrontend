@@ -48,6 +48,7 @@ const appRoutes: Routes = [
   {path: 'queue/:id', component: QueueDetailsComponent},
   {path: 'queuestatus', component: QueueStatusComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'admin-panel', component: AdminPanelComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
