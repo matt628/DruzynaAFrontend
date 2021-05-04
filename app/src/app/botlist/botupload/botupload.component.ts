@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 import { buffer } from 'rxjs/operators';
 import { Bot } from 'src/app/objects/botInterface';
 import { DatabaseBotsService } from 'src/app/services/database-bots.service';
@@ -11,11 +12,11 @@ import { DatabaseBotsService } from 'src/app/services/database-bots.service';
   styleUrls: ['./botupload.component.css']
 })
 export class BotuploadComponent implements OnInit {
+  
   bot:Bot;
-  file: File;
   clearInput = null;
 
-  constructor(private dbService: DatabaseBotsService) { }
+  constructor(private dbService: DatabaseBotsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.bot = this.getEmptyBotObject();
@@ -25,27 +26,24 @@ export class BotuploadComponent implements OnInit {
 
   getEmptyBotObject(): Bot {
     var bot: Bot = {
-      id: this.getRandomId(),
+      id: this.route.snapshot.url[1].path,
       name: '',
       version: '',
-      team: '',
-      games: [],
-
+      zip: null,
     };
     return bot;
   }
 
   addBot() {
     // TODO: check against bad input
-    this.dbService.addBotToDatabase(this.bot, this.file);
+    this.dbService.addBotToDatabase(this.bot);
     this.bot = this.getEmptyBotObject();
-    this.file = null
     this.clearInput.value = ''
   
   }
 
   onFileSelected(event) {
-    this.file = event.target.files[0];
+    this.bot.zip = event.target.files[0];
     this.clearInput = event.target
     
   }

@@ -24,7 +24,7 @@ export class DatabaseBotsService {
     return formData
   }
 
-  addBotToDatabase(bot: Bot, zip: File) {
+  addBotToDatabase(bot: Bot) {
     // if (photo == null) {
       
     // }
@@ -32,7 +32,7 @@ export class DatabaseBotsService {
     const backendBot = {
       name: bot.name,
       version: bot.version,
-      payload: zip
+      payload: bot.zip
     }
     console.log(backendBot)
 

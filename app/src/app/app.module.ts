@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   {path: 'bot/:id', component: BotDetailsComponent},
   {path: 'bots-list', component: BotsComponent}, //To fix after adding context to bot list
   {path: 'add-game', component: NewGameComponent},
-  {path: 'add-bot', component: BotuploadComponent},
+  {path: 'add-bot/:id', component: BotuploadComponent},
   {path: 'start-game/:id', component: StartGameComponent},
   {path: 'queue/:id', component: QueueDetailsComponent},
   {path: 'queuestatus', component: QueueStatusComponent},
