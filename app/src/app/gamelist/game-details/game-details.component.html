@@ -5,11 +5,11 @@
         <h1 class="display-4">Hello, {{gameId}}!</h1>
         <p class="lead">{{description}}</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
         <!-- <ng-container *ngIf="isUserAdmin()">
             <button *ngIf="game" class="btn btn-success" [routerLink]="['/start-game', gameId]">New queue</button>
         </ng-container> -->
+        <app-queuelist [gameId]="gameId"></app-queuelist>
 
     </div>
-    <app-queuelist [gameId]="gameId"></app-queuelist>
 </div>

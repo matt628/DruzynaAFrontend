@@ -25,6 +25,7 @@
         </div>
 
         <div class="form-group">
+            <label class="form-label">(upload config as .py archive)</label>
             <app-file-upload formControlName="config" [progress]="progress"></app-file-upload>
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('config', 'required')">This field is required</ng-container>

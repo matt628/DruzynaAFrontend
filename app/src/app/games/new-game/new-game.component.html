@@ -31,23 +31,76 @@
 </div>
 <div class="form-wrapper">
     <form id='form' [formGroup]='uploadGame' (ngSubmit)="submit()">
-        <div class="mb-3">
+
+        <div class="form-group mb-3">
             <label class="form-label">Name </label>
             <input formControlName="name" id="name-value">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
             </div>
         </div>
-        <div class="mb-3">
+        <div class="form-group mb-3">
             <label class="form-label">Version </label>
             <input formControlName="version">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('version', 'required')">This field is required</ng-container>
             </div>
         </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Description </label>
+            <input formControlName="description">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Controller relative path </label>
+            <input formControlName="CONTROLLER_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Config relative path </label>
+            <input formControlName="CONFIG_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Game relative path </label>
+            <input formControlName="GAME_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Results relative path </label>
+            <input formControlName="RESULTS_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
 
-        <div class="mb-3">
-            <app-file-upload formControlName="payload" [progress]="progress"></app-file-upload>
+        <div class="progress form-group" *ngIf="progress > 0">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label">(upload game as .zip archive)</label>
+            <div class="file-drop-area">
+                <span class="btn btn-primary mr-3">Choose file</span>
+                <span class="file-msg">or drag and drop file here</span>
+                <input class="file-input" type="file" (change)="uploadFile($event)">
+            </div>
+
+
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
                 <ng-container *ngIf="hasError('payload', 'requiredFileType')">Only zip 🤡</ng-container>

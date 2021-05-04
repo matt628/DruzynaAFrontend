@@ -1,8 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { filter, map, tap } from 'rxjs/operators';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { catchError, filter, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { pipe } from 'rxjs';
+import { UploadGameService } from '../../services/upload-game.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 export function uploadProgress<T>(cb: (progress: number) => void) {
@@ -26,59 +28,70 @@ export function toResponseBody<T>() {
   styleUrls: ['./new-game.component.css'],
 
 })
-export class NewGameComponent implements OnInit{
+export class NewGameComponent implements OnInit {
   progress = 0;
 
   uploadGame: FormGroup;
   success = false;
+  file: File | null;
 
-  constructor(private http: HttpClient) {
+  constructor(public fb: FormBuilder, private http: HttpClient, private uploadService: UploadGameService, private router: Router) {
+    this.uploadGame = this.createEmptyGame();
 
   }
   ngOnInit(): void {
-    this.uploadGame = this.createEmptyGame();
   }
 
   createEmptyGame() {
     return new FormGroup({
       name: new FormControl(null, Validators.required),
       version: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      CONTROLLER_RELATIVE_PATH: new FormControl(null, Validators.required),
+      CONFIG_RELATIVE_PATH: new FormControl(null, Validators.required),
+      GAME_RELATIVE_PATH: new FormControl(null, Validators.required),
+      RESULTS_RELATIVE_PATH: new FormControl(null, Validators.required),
       payload: new FormControl(null, [Validators.required, requiredFileType('zip')])
     });
   }
 
-  submit() {
-    this.success = false;
-    if ( !this.uploadGame.valid ) {
-      markAllAsDirty(this.uploadGame);
-      return;
-    }
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    console.log(file)
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        // 'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }),
-    };
-
-    this.http.post('https://botcompetitionarena.herokuapp.com/upload-game', toFormData(this.uploadGame.value), httpOptions).pipe(
-      uploadProgress(progress => (this.progress = progress)),
-      toResponseBody()
-    ).subscribe(res => {
-      this.progress = 0;
-      this.success = true;
-      this.uploadGame.reset();
-      this.showRespone(res);
+    this.uploadGame.patchValue({
+      payload: file
     });
-    this.uploadGame = this.createEmptyGame();
-
+    this.uploadGame.get('payload').updateValueAndValidity()
+    console.log(this.uploadGame.get('payload'))
   }
 
-  showRespone(res){
-    console.log(res)
-    alert(`Response from server:\n
-            ${res}`)
+  submit() {
+    this.uploadService.upload(toFormData(this.uploadGame)).subscribe((event: HttpEvent<any>) => {
+      switch (event.type) {
+        case HttpEventType.Sent:
+          console.log('Request has been made!');
+          break;
+        case HttpEventType.ResponseHeader:
+          console.log('Response header has been received!');
+          break;
+        case HttpEventType.UploadProgress:
+          this.progress = Math.round(event.loaded / event.total * 100);
+          console.log(`Uploaded! ${this.progress}%`);
+          break;
+        case HttpEventType.Response:
+          console.log('Game successfully created!', event.body);
+          alert("Game successfully added!")
+          this.router.navigate(['/games-list'])
 
+          setTimeout(() => {
+            this.progress = 0;
+          }, 1500);
+
+      }
+    })
+    this.uploadGame = this.createEmptyGame();
+    
   }
 
   hasError( field: string, error: string ) {
@@ -101,23 +114,24 @@ export function toFormData<T>( formValue: T ) {
     const value = formValue[key];
     formData.append(key, value);
   }
-
+  console.log(formValue)
+  console.log(formData)
   return formData;
 }
 
 export function requiredFileType(type: string): import("@angular/forms").ValidatorFn {
   return function (control: FormControl) {
     const file = control.value;
-    if (file) {
-      const extension = file.name.split('.')[1].toLowerCase();
-      if (type.toLowerCase() !== extension.toLowerCase()) {
-        return {
-          requiredFileType: true
-        };
-      }
+    // if (file) {
+    //   const extension = file.name.split('.')[1].toLowerCase();
+    //   if (type.toLowerCase() !== extension.toLowerCase()) {
+    //     return {
+    //       requiredFileType: true
+    //     };
+    //   }
 
-      return null;
-    }
+    //   return null;
+    // }
     return null;
   };
 
