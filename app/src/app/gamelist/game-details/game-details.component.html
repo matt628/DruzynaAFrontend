@@ -6,7 +6,10 @@
         <p class="lead">{{description}}</p>
         <hr class="my-4">
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <button *ngIf="game" class="btn btn-success" [routerLink]="['..','start-game', gameId]">New queue</button>
+        <ng-container *ngIf="isUserAdmin()">
+            <button *ngIf="game" class="btn btn-success" [routerLink]="['/start-game', gameId]">New queue</button>
+        </ng-container>
+
     </div>
     <app-queuelist [gameId]="gameId"></app-queuelist>
 </div>
