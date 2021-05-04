@@ -1,28 +1,9 @@
-<div class="course">
-    <div class="course-preview">
-        <h6>Queue</h6>
-        <h2 *ngIf="queue">{{queue.name}}</h2>
-        <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
-    </div>
-    <div class="course-info">
-        <div class="progress-wrapper">
-            <div class="progress-container">
-                <div class="progress"></div>
-                <!-- TODO set progress witdh to appropite width -->
-                <span *ngIf="queue" class="progress-text">
-                3 Days left
-                <!-- TODO: Update date ^^^ -->
-            </span>
-            </div>
-        </div>
-        <!-- <h6>Details</h6> -->
-        <!-- <h2>Callbacks & Closures</h2> -->
-        <div *ngIf="queue" class="game-description">{{queue.deadline}}</div>
-        <button *ngIf="queue" class="btn" [routerLink]="['/queue', queue.ID]">Details</button>
-        <!-- TODO: start GAME -->
-        <ng-container *ngIf='canStart'>
-        <!-- <button *ngIf="game" class="btn" [routerLink]="['..','start-game', game.id]">Start Game</button> -->
-        </ng-container>
+<div *ngIf="queue" class="card h-100">
+        <img src="https://www.pngkit.com/png/detail/60-607680_banner-black-and-white-png-transparent-images-youpluspngcom.png" class="card-img-top avatarList" alt="DEFBOT">
 
-    </div>
+        <div class="card-body">
+          <h5 class="card-title">{{queue.name}}</h5>
+          <p class="card-text">{{queue.deadline}}</p>
+          <button *ngIf="queue" class="ml-auto btn btn-secondary" [routerLink]="['../..', 'queue', queue.ID]">Details</button>
+        </div>
 </div>
