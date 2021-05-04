@@ -8,7 +8,7 @@ jobs:
   build:
     env:
       working-directory: ./app
-    name: Build and Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,10 +23,6 @@ jobs:
         
       - name: Build
         run: npm run build:ci
-        working-directory: ${{env.working-directory}}
-
-      - name: Test
-        run: npm run test:ci
         working-directory: ${{env.working-directory}}
 
       - name: Archive build
