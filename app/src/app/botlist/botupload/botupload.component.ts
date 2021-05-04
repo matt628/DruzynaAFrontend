@@ -26,7 +26,7 @@ export class BotuploadComponent implements OnInit {
 
   getEmptyBotObject(): Bot {
     var bot: Bot = {
-      id: this.route.snapshot.url[1].path,
+      queueId: this.route.snapshot.url[1].path,
       name: '',
       version: '',
       zip: null,
