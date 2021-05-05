@@ -7,6 +7,7 @@
         <h1>Results will be here</h1>
         <h2 style="font-size: large; font-weight: bolder">Logs</h2>
         <p>AFTER THE END OF MATCH YOU WILL SEE LOGS HERE</p>
+        <p *ngFor="let bot of placement">{{bot}}</p>
         <h1>Add an own bot</h1>
         <button *ngIf='!isAdmin()' class="ml-auto btn btn-secondary" [routerLink]="['/add-bot', queueID]">
       Dodaj swojego bota

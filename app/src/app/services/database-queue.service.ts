@@ -8,6 +8,7 @@ import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpResponse } from 
 })
 export class DatabaseQueueService {
   logURL = 'https://botcompetitionarena.herokuapp.com/queue-log/'
+  botPlacementByQueueIdURL = 'https://botcompetitionarena.herokuapp.com/queue-placement/'
   constructor(private http: HttpClient) {
 
 
@@ -29,5 +30,16 @@ export class DatabaseQueueService {
     };
    
     return this.http.get<any[]>(this.logURL+id, httpOptions);  }
+
+  getBotsPlacementByQueueId(queueId: number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }),
+    };
+    return this.http.get<any[]>(this.logURL+queueId, httpOptions);
+
+  }
 
 }

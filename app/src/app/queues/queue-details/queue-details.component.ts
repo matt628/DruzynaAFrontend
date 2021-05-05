@@ -18,6 +18,7 @@ export class QueueDetailsComponent implements OnInit {
   deadline: Observable<string>;
   URL = 'https://botompetitionarena.herokuapp.com/'
   logs: any;
+  placement: any;
   
 
   constructor(private route: ActivatedRoute, private queueDb: DatabaseQueueService, private authService: AuthService, private http: HttpClient) { }
@@ -30,6 +31,7 @@ export class QueueDetailsComponent implements OnInit {
       this.deadline = of(q.deadline)
     })
     this.getLogsByQueueId(this.queueID)
+    this.getBotPlacementByQueueId(this.queueID)
 
   }
 
@@ -57,5 +59,14 @@ export class QueueDetailsComponent implements OnInit {
       console.log(response);
       this.logs = response;
     })
+  }
+
+  getBotPlacementByQueueId(queueId) {
+    console.log("Sending a request to get bot placement")
+    return this.queueDb.getBotsPlacementByQueueId(queueId).subscribe((response) => {
+      console.log("Queue placement:" + response)
+      this.placement = response;
+    })
+
   }
 }
