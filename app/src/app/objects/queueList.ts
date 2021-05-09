@@ -2,15 +2,19 @@ import { Queue } from "./queueInterface";
 
 export const QUEUELIST: Queue[] = [
     {
-       "ID": "1",
-       "parentGameID": "1",
+       "id": "1",
+      "lastStatus": null,
+      "bots": [],
+      "log": null,
        "name": "PierwszaKolejka",
-       "deadline": "jutro",
+       "deadline": [2021, 5, 10, 9, 30],
     }, 
     {
-        "ID": "2",
-        "parentGameID": "1",
+        "id": "2",
+        "lastStatus": null,
+        "bots": [],
+        "log": null,
         "name": "DrugaKolejka",
-        "deadline": "Pojutrze",
+        "deadline": [2021, 5, 11, 9, 30],
      }
 ]
