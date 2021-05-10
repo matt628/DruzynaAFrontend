@@ -12,7 +12,6 @@
         <div class='d-flex justify-content-between mt-2'>
             <!-- <label>Estimated time remaining: {{remaining | async}}</label> -->
             <button [disabled]="isFinished | async" class="btn btn-success align-right mb-2" (click)=refresh()>Refresh</button>
-            <button [disabled]="!(isFinished | async)" class="btn btn-secondary" (click)="close()">End game</button>
         </div>
 
          <div class="scrollable">

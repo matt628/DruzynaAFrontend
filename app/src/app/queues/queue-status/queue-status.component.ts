@@ -75,8 +75,4 @@ export class QueueStatusComponent implements OnInit {
     this.logs = of([])
   }
 
-  close() {
-    //TODO - after creating endpoint for finishing queue
-  }
-
 }
