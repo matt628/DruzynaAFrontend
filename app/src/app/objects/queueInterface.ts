@@ -1,7 +1,14 @@
 export interface Queue {
-    ID?: string;
-    parentGameID?: string;
+    id: string,
     name: string,
-    deadline: string,
-    configuration?
+    deadline: number[],
+    bots: object[],
+    lastStatus: string,
+    log: any
+}
+
+export interface QueueStatus {
+    status: string
+    progress?: string,
+    results?: {place: number, botId: string, points: string}
 }
