@@ -25,6 +25,7 @@ export class QueueDetailsComponent implements OnInit {
   status: Observable<string>
   URL = 'https://botcompetitionarena.herokuapp.com/'
   logs: any;
+  placement: any;
   results: Observable<any[]>;
 
   @ViewChild(QueueStatusComponent)
@@ -58,6 +59,9 @@ export class QueueDetailsComponent implements OnInit {
       this.isFinished = of(parseStatus(s).status == 'finished')
       this.tryPrintResults()
     })
+    this.getLogsByQueueId(this.queueID)
+    this.getBotPlacementByQueueId(this.queueID)
+
 
     
   }
@@ -88,6 +92,14 @@ export class QueueDetailsComponent implements OnInit {
     })
   }
 
+  getBotPlacementByQueueId(queueId) {
+    console.log("Sending a request to get bot placement")
+    return this.queueDb.getBotsPlacementByQueueId(queueId).subscribe((response) => {
+      console.log("Queue placement:" + response)
+      this.placement = response;
+    })
+
+  }
   getQueueStatus() {
     return this.queueStatus
   }

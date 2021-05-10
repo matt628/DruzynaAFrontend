@@ -14,6 +14,7 @@
         <h1>Results will be here</h1>
 
         <h2 style="font-size: large; font-weight: bolder">Logs</h2>
+
         <p *ngIf="!(isFinished | async)">AFTER THE END OF MATCH YOU WILL SEE LOGS HERE</p>
         <table *ngIf = "isFinished | async" class="table">
           <thead>
@@ -41,7 +42,6 @@
           </button>
         </ng-container>
         
-
         <h1>Your competitors:</h1>
         <p>a bot list</p>
     </div>
