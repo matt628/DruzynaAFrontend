@@ -14,7 +14,12 @@ export class QueuelistComponent implements OnInit {
   queueList: Queue[];
   @Input() gameId;
   ngOnInit(): void {
-    this.queueList = this.getQueueByGameId();
+    this.database.getQueueByGameId(this.gameId).subscribe((response) => {
+      console.log("subscribed data ",response)
+      this.queueList = response.queues;  
+      
+ 
+    })
   }
 
   getQueueByGameId() {
