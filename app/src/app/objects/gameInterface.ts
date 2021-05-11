@@ -1,8 +1,14 @@
+import { Queue } from "./queueInterface";
+
 export interface Game {
     id:string;
     name: string;
-    currentBattleNumer: number;
-    totalBattleNumler: number
-    shortDescription: string;
+    version?: string;
+    queues?: Queue[];
+    currentBattleNumer?: number;
+    totalBattleNumler?: number;
+    shortDescription?: string;
+    payload?: any;
+
     photoURL?: string;
   }

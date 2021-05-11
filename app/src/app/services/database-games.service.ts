@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Game } from '../objects/gameInterface';
 import { GAMELIST } from '../objects/gameList';
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { of, pipe } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { QUEUELIST } from '../objects/queueList';
 import { Queue } from '../objects/queueInterface';
@@ -19,6 +19,7 @@ export function toResponseBody<T>() {
 })
 export class DatabaseGamesService {
   URL = 'https://botcompetitionarena.herokuapp.com/games';
+  URLQueues = 'https://botcompetitionarena.herokuapp.com/games/'
   gameCollection: Game[] = GAMELIST
   queueCollectionForGame1: Queue[] = QUEUELIST;
 
@@ -56,9 +57,20 @@ export class DatabaseGamesService {
     return {id: '-1', name: '', currentBattleNumer: -1, totalBattleNumler: -1, shortDescription: ''};
   }
 
-  getQueueByGameId(gameID){
+  getQueueByGameId(gameID) : Observable<Game> {
     // TODO: do innego serwisu
-    return this.queueCollectionForGame1;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }),
+    };
+    return this.http.get<Game>(this.URLQueues+gameID, httpOptions).pipe((res) => {
+      console.log(res);
+      return res;
+    });
+    
+    // return this.queueCollectionForGame1;
   }
   
 
