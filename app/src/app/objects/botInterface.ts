@@ -1,6 +1,7 @@
 export interface Bot { // TODO reafactor when backend ready
-    queueId:string,
+    id?: string,
+    queueId?:string,
     name:string,
     version:string,
-    zip: File
+    zip?: File
 }
