@@ -11,11 +11,11 @@
 
         <app-queue-status *ngIf="showStatus | async" [queue]="getQueueStatus()" (refreshEvent)="refresh()"></app-queue-status>
 
-        <h1>Results will be here</h1>
+        <h1 *ngIf="!(isFinished | async)">Results will be here</h1>
 
         <h2 style="font-size: large; font-weight: bolder">Logs</h2>
 
-        <p *ngIf="!(isFinished | async)">AFTER THE END OF MATCH YOU WILL SEE LOGS HERE</p>
+        <p >AFTER THE END OF MATCH YOU WILL SEE LOGS HERE</p>
         <table *ngIf = "isFinished | async" class="table">
           <thead>
             <tr>
