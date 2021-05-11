@@ -107,14 +107,16 @@ export function markAllAsDirty( form: FormGroup ) {
   }
 }
 
-export function toFormData<T>( formValue: T ) {
+export function toFormData<T>( formValue: FormGroup ) {
   const formData = new FormData();
+  console.log(formValue.value)
 
-  for ( const key of Object.keys(formValue) ) {
-    const value = formValue[key];
+  for ( const key of Object.keys(formValue.value) ) {
+    console.log(key)
+    const value = formValue.value[key];
     formData.append(key, value);
   }
-  console.log(formValue)
+
   console.log(formData)
   return formData;
 }

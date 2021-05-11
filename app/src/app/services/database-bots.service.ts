@@ -10,10 +10,17 @@ import { BOTLIST } from '../objects/botList';
 export class DatabaseBotsService {
   botsCollection: Bot[] = BOTLIST;
   SERVER_URL: string = "https://botcompetitionarena.herokuapp.com/upload-bot";
+  BOTS_URL = "https://botcompetitionarena.herokuapp.com/queues/"
 
   constructor(private httpClient: HttpClient, private router: Router) { }
-  getBotList(context) {
-    return this.botsCollection; //It will be much more sophisticated, promise
+  getBotList(queueId) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }),
+    };
+    return this.httpClient.get<{id, name, deadline, bots: {id, place, log, bot: Bot}[]}>(this.BOTS_URL+queueId, httpOptions);
   }
 
   formData(formValue){

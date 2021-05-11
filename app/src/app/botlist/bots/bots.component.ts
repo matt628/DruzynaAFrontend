@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DatabaseBotsService } from '../../services/database-bots.service';
 import { Bot } from '../../objects/botInterface';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bots',
@@ -10,13 +12,13 @@ import { Bot } from '../../objects/botInterface';
 export class BotsComponent implements OnInit {
 
   constructor(private dbService: DatabaseBotsService) { }
-  botList: Bot[];
+  @Input() queueId;
+  botList: Observable<Bot[]>;
   ngOnInit(): void {
-    this.getBots(""); //some context: user/game/whatever
+    this.dbService.getBotList(this.queueId).subscribe(r => {
+      this.botList  = of(r.bots.map(b => b.bot))
+    })
   } 
 
-  getBots(context) {
-    this.botList = this.dbService.getBotList(context);
-  }
 
 }
