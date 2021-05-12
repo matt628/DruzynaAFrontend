@@ -36,7 +36,8 @@ export class QueueStatusComponent implements OnInit {
         this.progress = of(q.progress)
         console.log(q)
       })
-    }    
+    }
+    
   }
 
 
