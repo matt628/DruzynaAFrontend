@@ -121,6 +121,10 @@ export class QueueDetailsComponent implements OnInit {
       }
     })
   }
+  
+  botLogLink(){
+    return "https://botcompetitionarena.herokuapp.com/queue-log/" + this.queueID
+  }
 
 }
 function stringifyDeadline(deadline: number[]): any {
@@ -147,5 +151,9 @@ function getStringStatus(q: Queue): any {
     stat = "Finished"
   }
   return stat
+
+ 
 }
+
+
 
