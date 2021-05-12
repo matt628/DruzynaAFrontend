@@ -62,7 +62,8 @@ export class DatabaseQueueService {
 export function parseStatus(status) {
   if (status == null) return null;
   if (status == '') return {status: 'loading'}
-  if (status[0] == '[') {
+  if (status[0] == '[' && status != '[]') {
+    console.log(status)
     let unbracketed = status.substr(1, status.length - 2)
     let split = unbracketed.split(",")
     split = split.map(elem => elem.trim())
@@ -76,12 +77,13 @@ export function parseStatus(status) {
       return {place: split.indexOf(elem) + 1, botId: elem[0], points: elem[1]}
     })
     return {status: 'finished', progress: "100", results: split}
-  } else {
+  } else if (status != '[]') {
     let j = status
     j = j.split(":")[1].trim()
     console.log(j)
-
-    let percentage = j[0].split("%")[0]
+    let percentage = j.split("%")[0]
+    
     return {status: 'running', progress: percentage}
   }
+  return null;
 }

@@ -27,15 +27,16 @@ export class QueueStatusComponent implements OnInit {
   progress: Observable<string>;
 
   ngOnInit(): void {
-    this.queueId = this.route.snapshot.url[1].path
-    this.queue.subscribe(q => {
-      this.status = of(q)
-      this.isFinished = of(q.status == 'finished')
-      this.progress = of(q.progress)
-      console.log(q)
-    })
-
     this.logs = of([])
+    this.queueId = this.route.snapshot.url[1].path
+    if (this.queue != null) {
+      this.queue.subscribe(q => {
+        this.status = of(q)
+        this.isFinished = of(q.status == 'finished')
+        this.progress = of(q.progress)
+        console.log(q)
+      })
+    }    
   }
 
 
@@ -45,8 +46,12 @@ export class QueueStatusComponent implements OnInit {
 
   refresh() {
     this.queueService.getQueueStatus(this.queueId).subscribe((st) => {
-      this.isFinished = of(parseStatus(st).status == 'finished')
-      this.progress = of(parseStatus(st).progress)})
+      let parsed = parseStatus(st)
+      if (parsed != null) {
+        this.isFinished = of(parseStatus(st).status == 'finished')
+        this.progress = of(parseStatus(st).progress)
+      }
+    })
     // this.remaining = this.getQueueStatus().pipe(map(({percentage, remaining}) => this.getFormattedTime(remaining)))
     this.logs.subscribe(l => {
       this.queueService.getQueueStatus(this.queueId).subscribe(s => {
