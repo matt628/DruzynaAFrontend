@@ -40,7 +40,7 @@ export class DatabaseBotsService {
     const backendBot = {
       name: bot.name,
       version: bot.version,
-      queueId: bot.queueId,
+      queue: bot.queueId,
       payload: bot.zip
     }
     console.log(backendBot)

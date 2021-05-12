@@ -24,7 +24,6 @@ export class QueueDetailsComponent implements OnInit {
   queueStatus: Observable<any>;
   status: Observable<string>
   URL = 'https://botcompetitionarena.herokuapp.com/'
-  logs: any;
   placement: any;
   results: Observable<any[]>;
 
@@ -38,7 +37,7 @@ export class QueueDetailsComponent implements OnInit {
     this.queueID = this.route.snapshot.url[1].path
     this.loadQueueParams()
 
-    this.getLogsByQueueId(this.queueID)
+    // this.getLogsByQueueId(this.queueID)
 
   }
 
@@ -55,9 +54,15 @@ export class QueueDetailsComponent implements OnInit {
       this.status = of(getStringStatus(q))
     })
     this.queueDb.getQueueStatus(this.queueID).subscribe(s => {
-      this.queueStatus = of(parseStatus(s));
-      this.isFinished = of(parseStatus(s).status == 'finished')
-      this.tryPrintResults()
+      let parsed = parseStatus(s);
+      if (parsed != null) {
+        this.queueStatus = of(parseStatus(s));
+        this.isFinished = of(parseStatus(s).status == 'finished')
+        this.tryPrintResults()
+      } else {
+        this.queueStatus = null
+        this.isFinished = null
+      }
     })
     this.getLogsByQueueId(this.queueID)
     this.getBotPlacementByQueueId(this.queueID)
@@ -86,19 +91,18 @@ export class QueueDetailsComponent implements OnInit {
   }
 
   getLogsByQueueId(queueID) {
-    return this.queueDb.getQueueLogs(queueID).subscribe((response) => {
-      console.log(response);
-      this.logs = response;
-    })
+    // return this.queueDb.getQueueLogs(queueID).subscribe((response) => {
+    //   console.log(response);
+    //   this.logs = response;
+    // })
   }
 
   getBotPlacementByQueueId(queueId) {
-    console.log("Sending a request to get bot placement")
-    return this.queueDb.getBotsPlacementByQueueId(queueId).subscribe((response) => {
-      console.log("Queue placement:" + response)
-      this.placement = response;
-    })
-
+    // console.log("Sending a request to get bot placement")
+    // return this.queueDb.getBotsPlacementByQueueId(queueId).subscribe((response) => {
+    //   console.log("Queue placement:" + response)
+    //   this.placement = response;
+    // })
   }
   getQueueStatus() {
     return this.queueStatus
