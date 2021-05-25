@@ -11,6 +11,10 @@
         "test:ci": "ng test --watch=false --code-coverage --source-map true",
         "e2e": "ng e2e"
     },
+    "engines": {
+        "node": "14.15.3",
+        "npm": "6.14.9"
+    },
     "private": true,
     "dependencies": {
         "@angular/animations": "~11.2.7",
@@ -26,6 +30,7 @@
         "@angular/router": "~11.2.7",
         "@ng-bootstrap/ng-bootstrap": "^9.1.0",
         "bootstrap": "^4.5.0",
+        "express": "^4.17.1",
         "jquery": "^3.6.0",
         "jquery.js": "0.0.2-security",
         "ng2-file-upload": "^1.4.0",
