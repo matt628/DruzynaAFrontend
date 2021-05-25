@@ -1,10 +1,16 @@
-<p>Here will be game list </p>
-<ng-container *ngFor="let game of gameList">
+<div class="container">
+    <div class="mt-2 row row-cols-1 row-cols-md-3">
+        <button *ngIf="isUserAdmin()" class="btn btn-secondary m-2" routerLink="/add-game">Add a new game!</button>
+
+        <div *ngFor="let game of gameList" class="col mb-4">
+            <app-list-item [game]="game">
+
+            </app-list-item>
+
+        </div>
+    </div>
+    <!-- <ng-container *ngFor="let game of gameList">
     <app-list-item [game]="game">
 
     </app-list-item>
-</ng-container>
-<p>When you press on list item - you will see details of game </p>
-<p>from game details you can add bot</p>
-<p>to myślę że będzie komponent navbar DONE, lista DONE, element listy DONE, szczegoly kursu ,
-    <- to moje nowy kurs, aplikacja na kurs, moje gry, moje boty, szczegoly bota?</p>
+</ng-container> -->

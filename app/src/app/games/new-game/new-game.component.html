@@ -1,0 +1,113 @@
+<!-- <div class="container">
+    <h1>Upload new game</h1>
+    <form>
+        <div class="mb-3">
+          <label for="inputName">Name</label>
+          <input  class="form-control" id="inputName" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">Enter name of the game</small>
+        </div>
+        <div class="mb-3">
+          <label for="inputVersion">Version</label>
+          <input class="form-control" id="inputVersion">
+        </div>
+
+    <div class='mb-3'>
+        <input #fileUpload type="file"/>
+       
+        <div class="drop-box" ng2FileDrop
+             (click)="onUpload()">
+          <span class="drag-in-title">Import or drag file here</span>
+          <span class="drag-over-title">Drop the file</span>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+      </form>
+
+     
+</div> -->
+<div class="title-container">
+    <h1>Create your own universe!</h1>
+    <p>Divide and conquer!</p>
+</div>
+<div class="form-wrapper">
+    <form id='form' [formGroup]='uploadGame' (ngSubmit)="submit()">
+
+        <div class="form-group mb-3">
+            <label class="form-label">Name </label>
+            <input formControlName="name" id="name-value">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Version </label>
+            <input formControlName="version">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('version', 'required')">This field is required</ng-container>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Description </label>
+            <input formControlName="description">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Controller relative path </label>
+            <input formControlName="CONTROLLER_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Config relative path </label>
+            <input formControlName="CONFIG_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Game relative path </label>
+            <input formControlName="GAME_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Results relative path </label>
+            <input formControlName="RESULTS_RELATIVE_PATH">
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+            
+        </div>
+
+        <div class="progress form-group" *ngIf="progress > 0">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label">(upload game as .zip archive)</label>
+            <div class="file-drop-area">
+                <span class="btn btn-primary mr-3">Choose file</span>
+                <span class="file-msg">or drag and drop file here</span>
+                <input class="file-input" type="file" (change)="uploadFile($event)">
+            </div>
+
+
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
+                <ng-container *ngIf="hasError('payload', 'requiredFileType')">Only zip 🤡</ng-container>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>

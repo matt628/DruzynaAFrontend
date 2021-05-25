@@ -1,0 +1,33 @@
+
+<div class="container mt-5">
+
+    
+
+
+    <div>
+        <!-- <ng-template *ngIf="(isFinished | async); then finished else running"></ng-template>  -->
+        <!-- <ng-template #running> -->
+            <label>Queue progress: {{ progress | async }}%</label>
+        <mat-progress-bar mode="determinate" [value]='progress | async'></mat-progress-bar>
+        <div class='d-flex justify-content-between mt-2'>
+            <!-- <label>Estimated time remaining: {{remaining | async}}</label> -->
+            <button [disabled]="isFinished | async" class="btn btn-success align-right mb-2" (click)=refresh()>Refresh</button>
+        </div>
+
+         <div class="scrollable">
+            <ng-container *ngFor="let log of (logs | async)">{{log}}<br/></ng-container>
+          </div>
+          <button class="btn btn-secondary align-right mt-2" (click)=clear()>Clear</button>
+        <!-- </ng-template> -->
+        
+        <ng-template #finished>
+            
+        </ng-template>
+
+       
+
+
+        
+
+    </div>
+ </div>

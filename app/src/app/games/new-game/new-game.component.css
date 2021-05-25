@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* border: black solid 2px; */
+}
+
+.mb-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-container {
+    margin: 20px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: none;
+    padding: none;
+    line-height: 0.2;
+}
+
+p {
+    color: gray;
+    font-weight: lighter;
+    font-size: smaller;
+    margin: none;
+}
+
+.drop-box {
+    cursor: pointer;
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    text-align: center;
+    padding: 40px;
+}
+
+.drag-over-title {
+    display: none;
+}
+
+.drop-box.dragover {
+    opacity: 0.6;
+}
+
+.drop-box.dragover .drag-over-title {
+    display: block;
+}
+
+.drop-box.dragover .drag-in-title {
+    display: none;
+}
+
+/* input[type='file'] {
+    display: none;
+} */
+
+
+.file-drop-area {
+  border: 1px dashed #7c7db3;
+  border-radius: 3px;
+  position: relative;
+  width: 450px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 26px 20px 30px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.file-drop-area.is-active {
+  background-color: #3F4069;
+}
+
+.fake-btn {
+  background-color: #3F4069;
+  border: 1px solid #9E9EC4;
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-right: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.file-msg {
+  font-size: small;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: calc(100% - 130px);
+  vertical-align: middle;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.file-input:focus {
+  outline: none;
+}

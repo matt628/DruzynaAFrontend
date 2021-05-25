@@ -1,0 +1,9 @@
+<div *ngIf="queue" class="card h-100">
+        <img src="https://www.pngkit.com/png/detail/60-607680_banner-black-and-white-png-transparent-images-youpluspngcom.png" class="card-img-top avatarList" alt="DEFBOT">
+
+        <div class="card-body">
+          <h5 class="card-title">{{queue.name}}</h5>
+          <p class="card-text">{{queue.deadline}}</p>
+          <button *ngIf="queue" class="ml-auto btn btn-secondary" [routerLink]="['../..', 'queue', queue.id]">Details</button>
+        </div>
+</div>
