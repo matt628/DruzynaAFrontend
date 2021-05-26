@@ -1,13 +1,13 @@
 <div class="container">
     <div *ngIf="isUserAdmin()">
-        <button class='btn btn-success mr-2' [routerLink]="['/start-game', gameId]">Utwórz nową kolejkę</button>
-        <button class='btn btn-primary' [routerLink]="['/game-edit', gameId]">Edytuj szczegóły gry</button>
+        <button class='btn btn-success mr-2' [routerLink]="['/start-game', gameId]">Create new queue</button>
+        <button class='btn btn-primary' [routerLink]="['/game-edit', gameId]">Edit game details</button>
     </div>
     <br/>
     <div class="row row-cols-1 row-cols-md-3">
         <div *ngFor="let queue of queueList" class="col mb-4">
-            <app-queueitem [queue]="queue"> 
-                
+            <app-queueitem [queue]="queue">
+
             </app-queueitem>
 
         </div>
