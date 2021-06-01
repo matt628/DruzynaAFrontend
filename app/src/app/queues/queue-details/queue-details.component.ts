@@ -50,7 +50,7 @@ export class QueueDetailsComponent implements OnInit {
       // this.canStart = of(q.lastStatus == null)
       this.canStart = of(true)
       this.showStatus = of(q.lastStatus != null)
-      this.deadlineString = of(stringifyDeadline(q.deadline))
+      this.deadlineString = of(deadLineToReadable(q.deadline))
       this.status = of(getStringStatus(q))
     })
     this.queueDb.getQueueStatus(this.queueID).subscribe(s => {
@@ -132,9 +132,23 @@ function stringifyDeadline(deadline: number[]): any {
   date.setFullYear(deadline[0])
   date.setMonth(deadline[1])
   date.setDate(deadline[2])
-  date.setHours(deadline[3])
-  date.setMinutes(deadline[4])
+  date.setHours(23)
+  date.setMinutes(59)
+  date.setSeconds(59)
   return date
+}
+
+function deadLineToReadable(deadline: number[]): any {
+  let dateReadable = ''
+  dateReadable += deadline[2] + " " + getMonth(deadline[1]) + " " + deadline[0]
+
+  return dateReadable
+} 
+
+function getMonth(monthNumber) {
+  const  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthNumberCountedFrom0 = monthNumber - 1
+  return months[monthNumberCountedFrom0]    
 }
 
 function getStringStatus(q: Queue): any {
