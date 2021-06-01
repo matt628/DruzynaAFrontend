@@ -1,11 +1,35 @@
 <div class="container">
     <div class="jumbotron mt-5">
-        <p *ngIf="queueID">Game id: {{ queueID }}</p>
-        <h1>Queue status: {{ status | async }}</h1>
+        <!-- <p *ngIf="queueID">Game id: {{ queueID }}</p> -->
+        <p><span class="label">Queue status:</span> {{ status | async }}
+            <p class="mt-4"> <span class="label"> Deadline: </span> {{deadlineString | async}}</p>
+            <button *ngIf='isAdmin() && (canStart | async)' class="ml-auto btn btn-success " (click)="startQueue() ">
+              Start gry
+            </button>
+            <app-queue-status *ngIf="showStatus | async" [queue]="getQueueStatus()" (refreshEvent)="refresh()">
+            </app-queue-status>
 
-        <button *ngIf='isAdmin() && (canStart | async)' class="ml-auto btn btn-success " (click)="startQueue() ">
-          Start gry
-        </button>
+            <p *ngIf="!(isFinished | async)">Run game to check who is the best!
+                <p>
+                    <h2 *ngIf="isFinished | async" style="font-size: large; font-weight: bolder">Logs</h2>
+                    <table *ngIf="isFinished | async" class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Place</th>
+                                <th scope="col">BotId</th>
+                                <th scope="col">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let res of (results | async)">
+                                <!-- <th scope="row">1</th> -->
+                                <th scope="row">{{res.place}}</th>
+                                <td>{{res.botId}}</td>
+                                <td>{{res.points}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
         <h3 class="mt-4">Deadline:
             <h5>{{deadlineString | async}}</h5>

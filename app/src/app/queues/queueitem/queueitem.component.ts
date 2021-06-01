@@ -14,4 +14,11 @@ export class QueueitemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getMonth(monthNumber) {
+    const  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthNumberCountedFrom0 = monthNumber - 1
+    return months[monthNumberCountedFrom0]    
+  }
+
+
 }

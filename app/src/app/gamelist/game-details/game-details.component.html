@@ -2,8 +2,9 @@
 <p *ngIf="id">Game id: {{id | async}}</p> -->
 <div class="container">
     <div class="jumbotron mt-5">
-        <h1 class="display-4">Hello, {{gameId}}!</h1>
-        <p class="lead">{{description}}</p>
+        <!-- <h1 class="display-4" style="font-size: x-large;">Welcome in the game: {{ (game | async).name }}</h1> -->
+        <h1 class="display-4" style="font-size: x-large;">Game dashboard</h1>
+        <p class="lead">The creater descibe this game as: <span style="  font-style: italic;"> {{description }} </span></p>
         <hr class="my-4">
         <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
         <!-- <ng-container *ngIf="isUserAdmin()">
