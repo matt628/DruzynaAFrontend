@@ -33,27 +33,45 @@
     <form id='form' [formGroup]='uploadGame' (ngSubmit)="submit()">
 
         <div class="form-group mb-3">
-            <label class="form-label">Name </label>
-            <input formControlName="name" id="name-value">
+            <mat-form-field appearance="standard">
+                <mat-label>Name</mat-label>
+                <input formControlName="name" id="name-value" matInput placeholder="GameName">
+                <mat-hint>Any name you want - we recomend to use a main folder name</mat-hint>
+
+            </mat-form-field>
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
             </div>
         </div>
         <div class="form-group mb-3">
-            <label class="form-label">Version </label>
+            <mat-form-field appearance="standard">
+                <mat-label>Version</mat-label>
+                <input formControlName="version" matInput placeholder="1.0">
+                <mat-hint>This is just for your convenience - you won't get lost with many games</mat-hint>
+            </mat-form-field>
+            <!-- <label class="form-label">Version </label>
             <input formControlName="version">
+            -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('version', 'required')">This field is required</ng-container>
             </div>
         </div>
         <div class="form-group mb-3">
-            <label class="form-label">Description </label>
+            <mat-form-field appearance="standard">
+                <mat-label>Description</mat-label>
+                <input formControlName="description" matInput placeholder="Motivating description">
+                <mat-hint>Game description that your students will read - let it motivate them!</mat-hint>
+
+            </mat-form-field>
+            <!-- <label class="form-label">Description </label>
             <input formControlName="description">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
-            </div>
+            </div> -->
 
         </div>
+
+        <!-- tough part of the form! -->
         <div class="form-group mb-3">
             <label class="form-label">Controller relative path </label>
             <input formControlName="CONTROLLER_RELATIVE_PATH">
@@ -95,8 +113,6 @@
         <div class="form-group mb-3">
             <label class="form-label">(upload game as .zip archive)</label>
             <input type="file" (change)="uploadFile($event)">
-
-
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
                 <ng-container *ngIf="hasError('payload', 'requiredFileType')">Only zip 🤡</ng-container>
