@@ -31,14 +31,48 @@
                         </tbody>
                     </table>
 
-                    <ng-container *ngIf='!isAdmin() && (canEnroll | async)'>
-                        <h1 style="font-size: large; font-weight: bolder">Add an own bot</h1>
-                        <button class="ml-auto btn btn-secondary" [routerLink]="['/add-bot', queueID]">
-        Dodaj swojego bota
-      </button>
-                    </ng-container>
+        <h3 class="mt-4">Deadline:
+            <h5>{{deadlineString | async}}</h5>
+        </h3>
 
-                    <h1 class='md-2' style="font-size: large; font-weight: bolder">Other bots in this queue:</h1>
-                    <app-bots [queueId]="queueID"></app-bots>
+        <app-queue-status *ngIf="showStatus | async" [queue]="getQueueStatus()" (refreshEvent)="refresh()"></app-queue-status>
+
+        <h1 *ngIf="!(isFinished | async)">Results will be here</h1>
+
+        <h2 style="font-size: large; font-weight: bolder">Logs</h2>
+        <ng-container *ngIf="!(isFinished | async)">
+            <p>AFTER THE END OF MATCH YOU WILL SEE LOGS HERE</p>
+        </ng-container>
+        <ng-container *ngIf="isFinished | async">
+            <a [href]="this.botLogLink()">Kliknij tutaj aby pobrać logi</a>
+        </ng-container>
+        <table *ngIf="isFinished | async" class="table">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Place</th>
+                    <th scope="col">BotId</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let res of (results | async)">
+                    <!-- <th scope="row">1</th> -->
+                    <th scope="row">{{res.place}}</th>
+                    <td>{{res.botId}}</td>
+                    <td>{{res.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-container *ngIf='!isAdmin() && (canEnroll | async)'>
+            <h1>Add an own bot</h1>
+            <button class="ml-auto btn btn-secondary" [routerLink]="['/add-bot', queueID]">
+            Dodaj swojego bota
+          </button>
+        </ng-container>
+
+        <h1 class='md-2'>Your competitors:</h1>
+        <app-bots [queueId]="queueID"></app-bots>
     </div>
 </div>
