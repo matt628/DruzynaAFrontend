@@ -33,7 +33,7 @@
     <form id='form' [formGroup]='uploadGame' (ngSubmit)="submit()">
 
         <div class="form-group mb-3">
-            <mat-form-field appearance="standard">
+            <mat-form-field floatLabel="always">
                 <mat-label>Name</mat-label>
                 <input formControlName="name" id="name-value" matInput placeholder="GameName">
                 <mat-hint>Any name you want - we recomend to use a main folder name</mat-hint>
@@ -71,34 +71,61 @@
 
         </div>
 
+        <br>
+        <br>
+
+        <p>Below you will fill the game paths</p>
+        <!-- TODO: add a hover from right with tree view!  -->
+        <hr>
         <!-- tough part of the form! -->
         <div class="form-group mb-3">
-            <label class="form-label">Controller relative path </label>
-            <input formControlName="CONTROLLER_RELATIVE_PATH">
+            <mat-form-field floatLabel="always">
+                <mat-label>Controller relative path </mat-label>
+                <input formControlName="CONTROLLER_RELATIVE_PATH" matInput placeholder="GameFolder/bots">
+                <mat-hint>Folder where our software will add bots</mat-hint>
+
+            </mat-form-field>
+            <!-- <label class="form-label">Controller relative path </label>
+            <input formControlName="CONTROLLER_RELATIVE_PATH"> -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
             </div>
 
         </div>
         <div class="form-group mb-3">
-            <label class="form-label">Config relative path </label>
-            <input formControlName="CONFIG_RELATIVE_PATH">
+            <mat-form-field floatLabel="always">
+                <mat-label>Config relative path</mat-label>
+                <input formControlName="CONFIG_RELATIVE_PATH" matInput placeholder="GameFolder/config.py">
+                <mat-hint>Path to special config.py</mat-hint>
+            </mat-form-field>
+            <!-- <label class="form-label">Config relative path </label>
+            <input formControlName="CONFIG_RELATIVE_PATH"> -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
             </div>
 
         </div>
         <div class="form-group mb-3">
-            <label class="form-label">Game relative path </label>
-            <input formControlName="GAME_RELATIVE_PATH">
+            <mat-form-field floatLabel="always">
+                <mat-label>Game relative path</mat-label>
+                <input formControlName="GAME_RELATIVE_PATH" matInput placeholder="GameFolder/">
+                <mat-hint>Just main folder of game</mat-hint>
+            </mat-form-field>
+            <!-- <label class="form-label">Game relative path </label>
+            <input formControlName="GAME_RELATIVE_PATH"> -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
             </div>
 
         </div>
         <div class="form-group mb-3">
-            <label class="form-label">Results relative path </label>
-            <input formControlName="RESULTS_RELATIVE_PATH">
+            <mat-form-field floatLabel="always">
+                <mat-label>Results relative path</mat-label>
+                <input formControlName="RESULTS_RELATIVE_PATH" matInput placeholder="GameFolder/results">
+                <mat-hint>Folder where your game saves game logs</mat-hint>
+            </mat-form-field>
+            <!-- <label class="form-label">Results relative path </label>
+            <input formControlName="RESULTS_RELATIVE_PATH"> -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
             </div>
@@ -109,6 +136,12 @@
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
             </div>
         </div>
+        <br>
+        <br>
+
+        <p>Now upload your game as a zip ;) </p>
+        <!-- TODO: add a hover from right with tree view!  -->
+        <hr>
 
         <div class="form-group mb-3">
             <label class="form-label">(upload game as .zip archive)</label>
