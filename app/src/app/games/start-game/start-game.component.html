@@ -19,6 +19,7 @@
                     <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
                 </div>
             </div>
+            <!-- TODO add date validation -->
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('deadline', 'required')">This field is required</ng-container>
             </div>
