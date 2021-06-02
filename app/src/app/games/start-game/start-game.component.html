@@ -1,16 +1,14 @@
 <div class='container'>
     <form class='mt-2' [formGroup]='uploadGame' (ngSubmit)="submit()">
 
-        <div>
-            Game id: {{id | async}}
-        </div>
+        <!-- 
         <div class="form-group">
             <label class='mr-1'>Name: </label>
             <input formControlName="name">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
             </div>
-        </div>
+        </div> -->
         <div class="form-group">
             <div class="input-group">
                 <label for="dp">Deadline:</label>
@@ -37,4 +35,49 @@
         <button type="submit" class="btn btn-primary">Open game</button>
 
     </form>
+    <div>
+        You are adding a queue for a game id: {{id | async}}
+    </div>
+
+
 </div>
+
+
+<div>
+    You are adding a queue for a game id: {{id | async}}
+</div>
+<form [formGroup]="myForm" (ngSubmit)="submit()" class='mt-2'>
+
+    <mat-form-field>
+        <mat-label>Queue name</mat-label>
+        <input matInput placeholder="CreativeName" formControlName="name">
+        <mat-hint>Same as your python package name - we use this to import a bot to the game </mat-hint>
+        <mat-error *ngIf="this.myForm.get('name').invalid && this.myForm.get('name').touched">
+            This field is required
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Deadline</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <input matInput placeholder="Deadline" formControlName="deadline" type="date" useValueAsDate>
+        <mat-hint> </mat-hint>
+        <mat-error *ngIf="this.myForm.get('name').invalid && this.myForm.get('name').touched">
+            This field is required
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Congif file</mat-label>
+        <input matInput placeholder="CreativeName" formControlName="config">
+        <mat-hint></mat-hint>
+        <mat-error *ngIf="this.myForm.get('name').invalid && this.myForm.get('name').touched">
+            This field is required
+        </mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+</form>
