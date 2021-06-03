@@ -39,7 +39,7 @@ export class StartGameComponent implements OnInit {
     name: new FormControl(null, Validators.required),
     deadline: new FormControl(null, Validators.required),
     config: new FormControl(null, [Validators.required, requiredFileType('py')])
-  });
+  } );
   success = false;
   constructor(private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder) {
     this.minDate =  new Date(new Date().getTime())
@@ -47,7 +47,10 @@ export class StartGameComponent implements OnInit {
 
   myForm: FormGroup
   minDate: Date
+  
+  minDatechecker(){
 
+  }
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -67,6 +70,7 @@ export class StartGameComponent implements OnInit {
     this.success = false;
     if ( !this.uploadGame.valid ) {
       markAllAsDirty(this.uploadGame);
+      console.log("DUPA")
       return;
     }
 
@@ -85,6 +89,7 @@ export class StartGameComponent implements OnInit {
       this.success = true;
       this.uploadGame.reset();
     });
+    console.log("DUPA2")
 
   }
 
