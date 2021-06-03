@@ -70,7 +70,6 @@ export class StartGameComponent implements OnInit {
     this.success = false;
     if ( !this.uploadGame.valid ) {
       markAllAsDirty(this.uploadGame);
-      console.log("DUPA")
       return;
     }
 

@@ -9,7 +9,7 @@
             <label class='mr-1'>Name: </label>
             <input formControlName="name">
             <div class="invalid-feedback" style="display: block">
-                <ng-container *ngIf="hasError('name', 'required')">This field is required</ng-container>
+                <ng-container *ngIf="this.uploadGame.get('name').invalid && this.uploadGame.get('name').touched">This field is required</ng-container>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="invalid-feedback" style="display: block">
-                <ng-container *ngIf="hasError('deadline', 'required')">This field is required</ng-container>
+                <ng-container *ngIf="this.uploadGame.get('deadline').invalid && this.uploadGame.get('deadline').touched">This field is required. Deadline must be after current date</ng-container>
             </div>
         </div>
 
@@ -34,26 +34,21 @@
 
             <!-- <app-file-upload formControlName="config" [progress]="progress"></app-file-upload> -->
             <div class="invalid-feedback" style="display: block">
-                <ng-container *ngIf="hasError('config', 'required')">This field is required</ng-container>
-                <ng-container *ngIf="hasError('config', 'requiredFileType')">Only .py 🤡</ng-container>
+                <ng-container *ngIf="this.uploadGame.get('config').invalid && this.uploadGame.get('config').touched">This field is required</ng-container>
+                <ng-container *ngIf="this.uploadGame.get('config').invalid && this.uploadGame.get('config').touched">Only .py 🤡</ng-container>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Open game</button>
+        <button mat-raised-button [disabled]="uploadGame.invalid" type="submit" class="btn btn-primary">Submit</button>
 
     </form>
-    <div>
-        You are adding a queue for a game id: {{id | async}}
-    </div>
-
 
 </div>
 
 
 
-<form [formGroup]="myForm" (ngSubmit)="submit()" class='mt-2'>
+<!-- <form [formGroup]="myForm" (ngSubmit)="submit()" class='mt-2'> -->
 
-    <!-- <mat-form-field>
+<!-- <mat-form-field>
         <mat-label>Queue name</mat-label>
         <input matInput placeholder="CreativeName" formControlName="name">
         <mat-hint>Same as your python package name - we use this to import a bot to the game </mat-hint>
@@ -62,7 +57,7 @@
         </mat-error>
     </mat-form-field> -->
 
-    <!-- <mat-form-field>
+<!-- <mat-form-field>
         <mat-label>Deadline</mat-label>
         <input matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -73,7 +68,7 @@
             This field is required
         </mat-error>
     </mat-form-field> -->
-    <!-- 
+<!-- 
     <mat-form-field>
         <mat-label>Congif file</mat-label>
         <input matInput placeholder="CreativeName" formControlName="config">
@@ -84,5 +79,5 @@
     </mat-form-field> -->
 
 
-    <!-- <button mat-raised-button [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button> -->
-</form>
+<!-- <button mat-raised-button [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button> -->
+<!-- </form> -->
