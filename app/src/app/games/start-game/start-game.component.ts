@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { pipe } from 'rxjs';
 import { requiredFileType } from '../new-game/new-game.component';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -41,7 +41,8 @@ export class StartGameComponent implements OnInit {
     config: new FormControl(null, [Validators.required, requiredFileType('py')])
   } );
   success = false;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
+    private router: Router) {
     this.minDate =  new Date(new Date().getTime())
    }
 
@@ -87,8 +88,11 @@ export class StartGameComponent implements OnInit {
       this.progress = 0;
       this.success = true;
       this.uploadGame.reset();
+      this.router.navigate(['game/', this.id])
+    }, (err: HttpErrorResponse) => {
+      window.alert("Sorry there must be some problems with server. Try again later\n" + err)
+
     });
-    console.log("DUPA2")
 
   }
 
