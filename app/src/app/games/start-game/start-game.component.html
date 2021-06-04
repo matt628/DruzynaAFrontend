@@ -29,10 +29,10 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label">(upload config as .py archive)</label>
-            <input type="file" formControlName="config">
+            <label class="form-label">(upload config as .py)</label>
+            <!-- <input type="file" formControlName="config"> -->
 
-            <!-- <app-file-upload formControlName="config" [progress]="progress"></app-file-upload> -->
+            <app-file-upload formControlName="config" [progress]="progress"></app-file-upload>
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="this.uploadGame.get('config').invalid && this.uploadGame.get('config').touched">This field is required</ng-container>
                 <ng-container *ngIf="this.uploadGame.get('config').invalid && this.uploadGame.get('config').touched">Only .py 🤡</ng-container>

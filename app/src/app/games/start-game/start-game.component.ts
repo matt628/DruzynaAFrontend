@@ -81,14 +81,13 @@ export class StartGameComponent implements OnInit {
       }),
     };
 
-    this.http.post('https://botcompetitionarena.herokuapp.com/start-game', toFormData(this.uploadGame.value, this.staticId), httpOptions).pipe(
-      uploadProgress(progress => (this.progress = progress)),
-      toResponseBody()
-    ).subscribe(res => {
+    this.http.post('https://botcompetitionarena.herokuapp.com/start-game', toFormData(this.uploadGame.value, this.staticId), httpOptions).subscribe(res => {
+      console.log(res)
+      window.alert("upload successful")
       this.progress = 0;
       this.success = true;
       this.uploadGame.reset();
-      this.router.navigate(['game/', this.id])
+      this.router.navigate(['game/', this.staticId])
     }, (err: HttpErrorResponse) => {
       window.alert("Sorry there must be some problems with server. Try again later\n" + err)
 
