@@ -55,7 +55,8 @@ export class NewGameComponent implements OnInit {
       CONFIG_RELATIVE_PATH: new FormControl(null, Validators.required),
       GAME_RELATIVE_PATH: new FormControl(null, Validators.required),
       RESULTS_RELATIVE_PATH: new FormControl(null, Validators.required),
-      payload: new FormControl(null, [Validators.required, requiredFileType('zip')])
+      payload: new FormControl(null, [Validators.required, requiredFileType('zip')]),
+      RUN_COMMAND: new FormControl(null, Validators.required)
     });
   }
 
@@ -71,29 +72,32 @@ export class NewGameComponent implements OnInit {
   }
 
   submit() {
-    this.uploadService.upload(toFormData(this.uploadGame)).subscribe((event: HttpEvent<any>) => {
-      switch (event.type) {
-        case HttpEventType.Sent:
-          console.log('Request has been made!');
-          break;
-        case HttpEventType.ResponseHeader:
-          console.log('Response header has been received!');
-          break;
-        case HttpEventType.UploadProgress:
-          this.progress = Math.round(event.loaded / event.total * 100);
-          console.log(`Uploaded! ${this.progress}%`);
-          break;
-        case HttpEventType.Response:
-          console.log('Game successfully created!', event.body);
-          alert("Game successfully added!")
-          this.router.navigate(['/games-list'])
+    console.log("UPLOADING GAME")
+    console.log(this.uploadGame)
+    this.uploadService.upload(toFormData(this.uploadGame))
+    // .subscribe((event: HttpEvent<any>) => {
+    //   switch (event.type) {
+    //     case HttpEventType.Sent:
+    //       console.log('Request has been made!');
+    //       break;
+    //     case HttpEventType.ResponseHeader:
+    //       console.log('Response header has been received!');
+    //       break;
+    //     case HttpEventType.UploadProgress:
+    //       this.progress = Math.round(event.loaded / event.total * 100);
+    //       console.log(`Uploaded! ${this.progress}%`);
+    //       break;
+    //     case HttpEventType.Response:
+    //       console.log('Game successfully created!', event.body);
+    //       alert("Game successfully added!")
+    //       this.router.navigate(['/games-list'])
 
-          setTimeout(() => {
-            this.progress = 0;
-          }, 1500);
+    //       setTimeout(() => {
+    //         this.progress = 0;
+    //       }, 1500);
 
-      }
-    })
+    //   }
+    // })
     this.uploadGame = this.createEmptyGame();
     
   }
