@@ -30,7 +30,7 @@ export function toResponseBody<T>() {
 })
 export class NewGameComponent implements OnInit {
   progress = 0;
-
+  gameInput:String;
   uploadGame: FormGroup;
   success = false;
   file: File | null;
