@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { pipe } from 'rxjs';
+import { config, pipe } from 'rxjs';
 import { UploadGameService } from '../../services/upload-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -31,6 +31,10 @@ export function toResponseBody<T>() {
 export class NewGameComponent implements OnInit {
   progress = 0;
   gameInput:String;
+  botsPath:String;
+  configPath:String;
+  gameRelativePath:String;
+  resultsPaht:String;
   uploadGame: FormGroup;
   success = false;
   file: File | null;
@@ -97,6 +101,17 @@ export class NewGameComponent implements OnInit {
   hasError( field: string, error: string ) {
     const control = this.uploadGame.get(field);
     return control.dirty && control.hasError(error);
+  }
+
+  autocomplete() {
+    if (this.gameInput === null) {
+      return;
+    }
+    console.log(this.gameInput)
+    this.botsPath = `${this.gameInput}/bots` 
+    this.configPath = `${this.gameInput}/config.py`
+    this.gameRelativePath = `${this.gameInput}/`
+    this.resultsPaht = `${this.gameInput}/results`
   }
 }
 
