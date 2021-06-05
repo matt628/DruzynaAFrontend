@@ -1,16 +1,16 @@
-    <div *ngIf="bot" class="card h-100">
+<div *ngIf="bot" class="card h-100">
 
-        <ng-template *ngIf="bot.photoURL; then botImg else defImg"></ng-template> 
-        <ng-template #botImg>
-            <img [src]="bot.photoURL" class="card-img-top avatarList" alt="BOT">
-        </ng-template>
-        <ng-template #defImg>
-            <img src="https://cdn.pixabay.com/photo/2017/10/24/00/39/bot-icon-2883144_1280.png" class="card-img-top avatarList" alt="DEFBOT">
-        </ng-template>
+    <ng-template *ngIf="bot.photoURL; then botImg else defImg"></ng-template>
+    <ng-template #botImg>
+        <img [src]="bot.photoURL" class="card-img-top avatarList" alt="BOT">
+    </ng-template>
+    <ng-template #defImg>
+        <img src="https://cdn.pixabay.com/photo/2017/10/24/00/39/bot-icon-2883144_1280.png" class="card-img-top avatarList" alt="DEFBOT">
+    </ng-template>
 
-        <div class="card-body">
-          <h5 class="card-title">{{bot.name}}</h5>
-          <p class="card-text">{{bot.description}}</p>
-          <button *ngIf="bot" class="ml-auto btn btn-secondary" [routerLink]="['..','bot', bot.id]">Details</button>
-        </div>
-      </div>
+    <div class="card-body">
+        <h5 class="card-title">{{bot.name}}</h5>
+        <p class="card-text">{{bot.description}}</p>
+        <button *ngIf="bot" class="ml-auto btn btn-secondary" [routerLink]="['/bot', bot.id]">Details</button>
+    </div>
+</div>
