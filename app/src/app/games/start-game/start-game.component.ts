@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { pipe } from 'rxjs';
 import { requiredFileType } from '../new-game/new-game.component';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -39,11 +39,27 @@ export class StartGameComponent implements OnInit {
     name: new FormControl(null, Validators.required),
     deadline: new FormControl(null, Validators.required),
     config: new FormControl(null, [Validators.required, requiredFileType('py')])
-  });
+  } );
   success = false;
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
+    private router: Router) {
+    this.minDate =  new Date(new Date().getTime())
+   }
 
+  myForm: FormGroup
+  minDate: Date
+  
+  minDatechecker(){
+
+  }
   ngOnInit(): void {
+    this.myForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      deadline: ['', [Validators.required]],
+      config: ''
+    } )
+
+
     this.id = this.route.paramMap.pipe(
       switchMap((params) => {
         this.staticId = params.get('id');
@@ -65,13 +81,16 @@ export class StartGameComponent implements OnInit {
       }),
     };
 
-    this.http.post('https://botcompetitionarena.herokuapp.com/start-game', toFormData(this.uploadGame.value, this.staticId), httpOptions).pipe(
-      uploadProgress(progress => (this.progress = progress)),
-      toResponseBody()
-    ).subscribe(res => {
+    this.http.post('https://botcompetitionarena.herokuapp.com/start-game', toFormData(this.uploadGame.value, this.staticId), httpOptions).subscribe(res => {
+      console.log(res)
+      window.alert("upload successful")
       this.progress = 0;
       this.success = true;
       this.uploadGame.reset();
+      this.router.navigate(['game/', this.staticId])
+    }, (err: HttpErrorResponse) => {
+      window.alert("Sorry there must be some problems with server. Try again later\n" + err)
+
     });
 
   }
