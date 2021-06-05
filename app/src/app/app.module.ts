@@ -35,6 +35,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 const appRoutes: Routes = [
@@ -96,12 +99,16 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [   
   ],

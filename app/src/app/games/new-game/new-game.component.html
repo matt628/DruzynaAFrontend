@@ -35,7 +35,7 @@
         <div class="form-group mb-3">
             <mat-form-field floatLabel="always">
                 <mat-label>Name</mat-label>
-                <input formControlName="name" id="name-value" matInput placeholder="GameName">
+                <input formControlName="name" id="name-value" matInput placeholder="GameName" [(ngModel)]="gameInput">
                 <mat-hint>Any name you want - we recomend to use a main folder name</mat-hint>
 
             </mat-form-field>
@@ -75,13 +75,14 @@
         <br>
 
         <p>Now - the tough part - fill below the game paths</p>
+        <p style="font-style: italic;">But we can try to autocomplete it for you! <a style="font-style: normal;" class="btn btn-primary btn-sm" (click)="autocomplete()">Autocomplete</a></p>
         <!-- TODO: add a hover from right with tree view!  -->
         <hr>
         <!-- tough part of the form! -->
         <div class="form-group mb-3">
             <mat-form-field floatLabel="always">
                 <mat-label>Controller relative path </mat-label>
-                <input formControlName="CONTROLLER_RELATIVE_PATH" matInput placeholder="GameFolder/bots">
+                <input formControlName="CONTROLLER_RELATIVE_PATH" matInput placeholder="GameFolder/bots" [(ngModel)]="botsPath">
                 <mat-hint>Folder where our software will add bots</mat-hint>
 
             </mat-form-field>
@@ -90,13 +91,17 @@
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
             </div>
-
         </div>
         <div class="form-group mb-3">
             <mat-form-field floatLabel="always">
                 <mat-label>Config relative path</mat-label>
-                <input formControlName="CONFIG_RELATIVE_PATH" matInput placeholder="GameFolder/config.py">
-                <mat-hint>Path to special config.py</mat-hint>
+                <input formControlName="CONFIG_RELATIVE_PATH" matInput placeholder="GameFolder/config.py" [(ngModel)]="configPath">
+                <mat-hint>Path to special config.py
+                    <svg matTooltip="Config.py must have: a list with a comment #BOTS# and a runs parameter with maximum run number." matTooltipPosition="right" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                      </svg>
+                </mat-hint>
             </mat-form-field>
             <!-- <label class="form-label">Config relative path </label>
             <input formControlName="CONFIG_RELATIVE_PATH"> -->
@@ -108,7 +113,7 @@
         <div class="form-group mb-3">
             <mat-form-field floatLabel="always">
                 <mat-label>Game relative path</mat-label>
-                <input formControlName="GAME_RELATIVE_PATH" matInput placeholder="GameFolder/">
+                <input formControlName="GAME_RELATIVE_PATH" matInput placeholder="GameFolder/" [(ngModel)]="gameRelativePath">
                 <mat-hint>Just main folder of game</mat-hint>
             </mat-form-field>
             <!-- <label class="form-label">Game relative path </label>
@@ -121,8 +126,22 @@
         <div class="form-group mb-3">
             <mat-form-field floatLabel="always">
                 <mat-label>Results relative path</mat-label>
-                <input formControlName="RESULTS_RELATIVE_PATH" matInput placeholder="GameFolder/results">
+                <input formControlName="RESULTS_RELATIVE_PATH" matInput placeholder="GameFolder/results" [(ngModel)]="resultsPaht">
                 <mat-hint>Folder where your game saves game logs</mat-hint>
+            </mat-form-field>
+            <!-- <label class="form-label">Results relative path </label>
+            <input formControlName="RESULTS_RELATIVE_PATH"> -->
+            <div class="invalid-feedback" style="display: block">
+                <ng-container *ngIf="hasError('description', 'required')">This field is required</ng-container>
+            </div>
+
+        </div>
+
+        <div class="form-group mb-3">
+            <mat-form-field floatLabel="always">
+                <mat-label>Run command</mat-label>
+                <input formControlName="RUN_COMMAND" matInput placeholder="python game.py">
+                <mat-hint>Command to run your game</mat-hint>
             </mat-form-field>
             <!-- <label class="form-label">Results relative path </label>
             <input formControlName="RESULTS_RELATIVE_PATH"> -->
@@ -144,7 +163,6 @@
         <hr>
 
         <div class="form-group mb-3">
-            <label class="form-label">(upload game as .zip archive)</label>
             <input type="file" (change)="uploadFile($event)">
             <div class="invalid-feedback" style="display: block">
                 <ng-container *ngIf="hasError('payload', 'required')">This field is required</ng-container>
@@ -152,7 +170,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="uploadGame.invalid" type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 </div>
