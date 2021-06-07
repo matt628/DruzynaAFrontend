@@ -69,7 +69,10 @@ export class DatabaseBotsService {
       //     console.log('Bot successfully created!', res.body);
       //     alert("Bot successfully added!")
       // }
-      // this.router.navigate(['/queue', bot.queueId])
+      window.alert("Dodano bota pomyślnie")
+      this.router.navigate(['/queue', bot.queueId])
+
+    }, (err) => {
 
     }, (err: HttpErrorResponse) => {
       window.alert("Sorry there must be some problems with server. Try again later\n" + err)
