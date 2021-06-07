@@ -37,7 +37,7 @@
 
 
 
-                    <ng-container *ngIf='!isAdmin() && (canEnroll | async)'>
+                    <ng-container *ngIf='(canEnroll | async)'>
                         <h1>Add an own bot</h1>
                         <button class="ml-auto btn btn-secondary" [routerLink]="['/add-bot', queueID]">
                         Dodaj swojego bota
