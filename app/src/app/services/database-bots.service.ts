@@ -72,8 +72,6 @@ export class DatabaseBotsService {
       window.alert("Dodano bota pomyślnie")
       this.router.navigate(['/queue', bot.queueId])
 
-    }, (err) => {
-
     }, (err: HttpErrorResponse) => {
       window.alert("Sorry there must be some problems with server. Try again later\n" + err)
 
