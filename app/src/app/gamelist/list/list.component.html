@@ -2,12 +2,22 @@
     <div class="mt-2 row row-cols-1 row-cols-md-3">
         <button *ngIf="isUserAdmin()" class="btn btn-secondary m-2" routerLink="/add-game">Add a new game!</button>
 
-        <div *ngFor="let game of gameList" class="col mb-4">
-            <app-list-item [game]="game">
+        <div *ngIf="gameList; then list else loading"></div>
+        
+        <ng-template #list>
+            <div *ngFor="let game of gameList" class="col mb-4">
+                <app-list-item [game]="game">
 
-            </app-list-item>
+                </app-list-item>
 
-        </div>
+            </div>
+        </ng-template>
+        <ng-template #loading>
+            <div class ='col-md-12'>
+                <mat-spinner class='m-auto' [diameter]=300></mat-spinner>
+
+            </div>
+        </ng-template>
     </div>
     <!-- <ng-container *ngFor="let game of gameList">
     <app-list-item [game]="game">

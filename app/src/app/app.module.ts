@@ -37,6 +37,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 
 
@@ -83,7 +84,7 @@ const appRoutes: Routes = [
     QueueDetailsComponent,
     QueueStatusComponent,
     LoginPageComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +101,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatRippleModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
