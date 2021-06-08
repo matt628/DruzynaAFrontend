@@ -98,7 +98,7 @@ export class NewGameComponent implements OnInit {
 
     //   }
     // })
-    this.uploadGame = this.createEmptyGame();
+    // this.uploadGame = this.createEmptyGame();
     
   }
 
