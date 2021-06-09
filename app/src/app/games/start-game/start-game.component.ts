@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { pipe } from 'rxjs';
@@ -83,10 +83,11 @@ export class StartGameComponent implements OnInit {
 
     this.http.post('https://botcompetitionarena.herokuapp.com/start-game', toFormData(this.uploadGame.value, this.staticId), httpOptions).subscribe(res => {
       console.log(res)
-      window.alert("upload successful")
       this.progress = 0;
       this.success = true;
       this.uploadGame.reset();
+      delay(200)
+      window.alert("upload successful")
       this.router.navigate(['game/', this.staticId])
     }, (err: HttpErrorResponse) => {
       window.alert("Sorry there must be some problems with server. Try again later\n" + err)
@@ -106,6 +107,10 @@ export function markAllAsDirty( form: FormGroup ) {
     form.controls[control].markAsDirty();
   }
 }
+export function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
 
 export function toFormData<T>( formValue: T , id: string) {
   const formData = new FormData();
