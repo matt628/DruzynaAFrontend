@@ -46,6 +46,11 @@ export class StartGameComponent implements OnInit {
   constructor(public dialog: MatDialog, private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
     private router: Router) {
     this.minDate =  new Date(new Date().getTime())
+    this.route.paramMap.subscribe( params => {
+      this.staticId = params.get('id');
+    }
+        
+    )
    }
 
   myForm: FormGroup
@@ -62,19 +67,11 @@ export class StartGameComponent implements OnInit {
     } )
 
 
-    this.id = this.route.paramMap.pipe(
-      switchMap((params) => {
-        this.staticId = params.get('id');
-        return params.get('id')}), catchError(err => of(""))
-    )
+
   }
 
   submit() {
     this.success = false;
-    if ( !this.uploadGame.valid ) {
-      markAllAsDirty(this.uploadGame);
-      return;
-    }
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -121,7 +118,7 @@ export function delay(ms: number) {
 export function toFormData<T>( formValue: T , id: string) {
   const formData = new FormData();
 
-  formData.append("gameId", id)
+ 
   for ( const key of Object.keys(formValue) ) {
     const value = formValue[key];
     if (key === 'deadline') {
@@ -132,7 +129,11 @@ export function toFormData<T>( formValue: T , id: string) {
 
     }
   }
-
+  console.log(id)
+  formData.append("gameId", id)
+  for(var key in formData) {
+    console.log(key);
+}
   return formData;
 }
 

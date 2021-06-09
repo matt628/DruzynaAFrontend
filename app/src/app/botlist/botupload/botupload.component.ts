@@ -39,8 +39,6 @@ export class BotuploadComponent implements OnInit {
   addBot() {
     // TODO: check against bad input
     this.dbService.addBotToDatabase(this.bot);
-    this.bot = this.getEmptyBotObject();
-    this.clearInput.value = ''
   
   }
 
