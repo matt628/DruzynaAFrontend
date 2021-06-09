@@ -1,0 +1,14 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>IO</title><style>
+
+    </style></head>
+    <body><article id="b57bb584-bd60-4ca0-b359-647ec58e7d57" class="page sans"><div class="page-body"><h2 id="315a22fc-9271-44c8-bedd-8ce5482ea6f3" class="">Postać bota:</h2><p id="67aec78c-db5a-4e98-a7e2-15f1eddf0f2d" class=""><strong><mark class="highlight-red">Nazwa pliku musi być zgodna z nazwą podaną przy dodawaniu bota</mark></strong></p><ul id="5ec002aa-5cdf-4374-ae02-e736887ca952" class="bulleted-list"><li>pojedynczy plik &quot;nazwa bota&quot;.py</li></ul><ul id="f190125f-265e-43bd-8a4e-f48692887308" class="bulleted-list"><li>package pythonowy gdzie nazwa folderu jest również zgodna z nazwą bota jak powyżej (tak żeby się dało zaimportować <code>import nazwabota</code>)</li></ul><p id="6f2f125f-7c5e-4654-9690-edcb7cff7202" class="">Package lub plik musi zawierać klasę <code>BotController</code> , której konstruktor przyjmuje jeden argument: identyfikator bota. Klasa musi również implementować property <code>name</code> , które zwraca identyfikator bota podany do konstruktora.</p><p id="662b649a-e493-48ad-9aec-ba5615abb787" class="">Przykładowy bot:</p><pre id="875b46b1-8f79-4f1d-876e-55675b6a0d88" class="code"><code># example_bot.py
+    
+    class BotController:
+        def __init__(self, name):
+            self._name = name
+        
+        @property
+        def name(self):
+            return self._name</code></pre>
+            </div>
+            </article></body></html>
