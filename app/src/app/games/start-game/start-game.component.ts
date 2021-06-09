@@ -8,6 +8,8 @@ import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders, HttpEr
 import { pipe } from 'rxjs';
 import { requiredFileType } from '../new-game/new-game.component';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { QueueConfigHelpComponent } from '../../static/queue-config-help/queue-config-help.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export function uploadProgress<T>(cb: (progress: number) => void) {
   return tap((event: HttpEvent<T>) => {
@@ -41,7 +43,7 @@ export class StartGameComponent implements OnInit {
     config: new FormControl(null, [Validators.required, requiredFileType('py')])
   } );
   success = false;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private http: HttpClient, private formBuilder: FormBuilder,
     private router: Router) {
     this.minDate =  new Date(new Date().getTime())
    }
@@ -99,6 +101,10 @@ export class StartGameComponent implements OnInit {
     const control = this.uploadGame.get(field);
     return control.dirty && control.hasError(error);
   }  
+
+  showHelp() {
+    const dialogRef = this.dialog.open(QueueConfigHelpComponent);
+  }
 
 }
 export function markAllAsDirty( form: FormGroup ) {

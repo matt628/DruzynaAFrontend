@@ -37,7 +37,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BotHelpComponent } from './static/bot-help/bot-help.component';
+import { QueueConfigHelpComponent } from './static/queue-config-help/queue-config-help.component';
+import { GamePayloadHelpComponent } from './static/game-payload-help/game-payload-help.component';
+import { GamePathsHelpComponent } from './static/game-paths-help/game-paths-help.component'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 
 
@@ -85,6 +90,10 @@ const appRoutes: Routes = [
     QueueStatusComponent,
     LoginPageComponent,
     AdminPanelComponent,
+    BotHelpComponent,
+    QueueConfigHelpComponent,
+    GamePayloadHelpComponent,
+    GamePathsHelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +111,8 @@ const appRoutes: Routes = [
     MatRippleModule,
     MatIconModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
