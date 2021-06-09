@@ -48,6 +48,7 @@ export class BotDetailsComponent implements OnInit {
     }, 
     err => {
       console.log("Dont worry")
+      console.log(err)
     })
 
   }
