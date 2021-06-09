@@ -5,6 +5,9 @@ import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpHeaders } from 
 import { config, pipe } from 'rxjs';
 import { UploadGameService } from '../../services/upload-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { GamePathsHelpComponent } from '../../static/game-paths-help/game-paths-help.component';
+import { GamePayloadHelpComponent } from '../../static/game-payload-help/game-payload-help.component';
 
 
 export function uploadProgress<T>(cb: (progress: number) => void) {
@@ -39,7 +42,7 @@ export class NewGameComponent implements OnInit {
   success = false;
   file: File | null;
 
-  constructor(public fb: FormBuilder, private http: HttpClient, private uploadService: UploadGameService, private router: Router) {
+  constructor(public dialog: MatDialog, public fb: FormBuilder, private http: HttpClient, private uploadService: UploadGameService, private router: Router) {
     this.uploadGame = this.createEmptyGame();
 
   }
@@ -89,7 +92,7 @@ export class NewGameComponent implements OnInit {
     //       break;
     //     case HttpEventType.Response:
     //       console.log('Game successfully created!', event.body);
-    //       alert("Game successfully added!")
+    //       ("Game successfully added!")
     //       this.router.navigate(['/games-list'])
 
     //       setTimeout(() => {
@@ -116,6 +119,16 @@ export class NewGameComponent implements OnInit {
     this.configPath = `${this.gameInput}/config.py`
     this.gameRelativePath = `${this.gameInput}/`
     this.resultsPaht = `${this.gameInput}/results`
+  }
+
+  showPathsHelp(event: Event) {
+    event.preventDefault()
+    this.dialog.open(GamePathsHelpComponent)
+  }
+
+  showGameHelp(event: Event) {
+    event.preventDefault()
+    this.dialog.open(GamePayloadHelpComponent)
   }
 }
 

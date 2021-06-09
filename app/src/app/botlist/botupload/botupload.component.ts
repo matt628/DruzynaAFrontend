@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { buffer } from 'rxjs/operators';
 import { Bot } from 'src/app/objects/botInterface';
 import { DatabaseBotsService } from 'src/app/services/database-bots.service';
+import { BotHelpComponent } from '../../static/bot-help/bot-help.component';
 
 @Component({
   selector: 'app-botupload',
@@ -16,7 +18,7 @@ export class BotuploadComponent implements OnInit {
   bot:Bot;
   clearInput = null;
 
-  constructor(private dbService: DatabaseBotsService, private route: ActivatedRoute) { }
+  constructor(private dbService: DatabaseBotsService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.bot = this.getEmptyBotObject();
@@ -53,5 +55,9 @@ export class BotuploadComponent implements OnInit {
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
     // after the decimal.
     return '_' + Math.random().toString(36).substr(2, 9);  }
+
+    showHelp() {
+      const dialogRef = this.dialog.open(BotHelpComponent);
+    }
 }
 
