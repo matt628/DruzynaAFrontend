@@ -1,4 +1,7 @@
-<p>Here will be displayed details of the bot</p>
-<p>Hope it will works ;) </p>
+<p>We are testing your bot!</p>
 <p *ngIf="id">Bot id: {{id}}</p>
 <p *ngIf="queueId">queue id: {{queueId}}</p>
+<div *ngIf="working" class='col-md-12'>
+    <mat-spinner class='m-auto' [diameter]=300></mat-spinner>
+
+</div>

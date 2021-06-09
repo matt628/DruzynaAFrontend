@@ -14,6 +14,7 @@ export class BotDetailsComponent implements OnInit {
   queueId: string;
   URL_make_run = 'https://botcompetitionarena.herokuapp.com/bot-test'
   results: Observable<any>
+  working = true;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     this.route.paramMap.subscribe(params => {
@@ -49,6 +50,10 @@ export class BotDetailsComponent implements OnInit {
     err => {
       console.log("Dont worry")
       console.log(err)
+      this.working = false
+      console.log(err.error.text);
+      window.alert(err.error.text);
+
     })
 
   }
